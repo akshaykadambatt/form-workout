@@ -1,0 +1,4 @@
+import {defineConfig} from 'vite';
+import react from '@vitejs/plugin-react';
+import {VitePWA} from 'vite-plugin-pwa';
+export default defineConfig({plugins:[react(),VitePWA({registerType:'prompt',includeAssets:['favicon.svg','images/*'],manifest:{name:'Form — Workout journal',short_name:'Form',description:'Your next set. Your own pace.',theme_color:'#171919',background_color:'#171919',display:'standalone',start_url:'/',icons:[{src:'/icon-192.png',sizes:'192x192',type:'image/png'},{src:'/icon-512.png',sizes:'512x512',type:'image/png',purpose:'any maskable'}]},workbox:{globPatterns:['**/*.{js,css,html,png,jpg,svg,webp,woff2,json}'],maximumFileSizeToCacheInBytes:4000000}})],build:{rollupOptions:{output:{manualChunks:{firebase:['firebase/app','firebase/auth','firebase/firestore'],react:['react','react-dom']}}}},server:{port:5173,strictPort:true}});
