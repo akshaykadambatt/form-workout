@@ -7,6 +7,9 @@ A mobile-first workout journal for upper/lower training. Log your sets, adjust w
 ## Features
 
 - Per-set weight, reps, and completion tracking with large touch controls.
+- Previous completed weights and reps prefilled when starting a workout, with program targets kept visible.
+- Optional progression review and autofill after two successful matching workouts; completed and manually edited sets are preserved.
+- Top-of-screen notifications and a separate floating rest timer.
 - Configurable weight increments, pounds/kilograms, and load conventions.
 - A nine-week, 54-session upper/lower sequence that advances when you finish a workout. Rest days leave the next session waiting.
 - Exercise photos, movement guides, tempo notes, supersets, dropsets, and timed sets.
@@ -43,7 +46,13 @@ npm test
 npm run build
 ```
 
-The behavior tests cover program order, weekly changes, segmented sets, duration and AMRAP targets, validation, skipped sets, cycle rollover, previous weights, unit changes, and exercise ordering.
+The behavior tests cover program order, weekly changes, segmented sets, duration and AMRAP targets, validation, skipped sets, cycle rollover, previous weights and reps, unit changes, exercise ordering, progression eligibility, and protection of edited or completed sets.
+
+## Progression suggestions
+
+The optional button uses a conservative adaptation of the [AHA's 2-for-2 guideline](https://pmc.ncbi.nlm.nih.gov/articles/PMC11209834/). The last two occurrences of the same workout must have every prescribed set completed at least two reps above the target (or range maximum), at the same per-set weights. Exercise, units, load convention, reps, sets, effort and technique notes must match. Failed or skipped occurrences break eligibility. This is a practical guideline, not a guaranteed timetable; follow the program's effort target rather than forcing extra reps.
+
+Autofill offers one configured weight step, capped at a 10% increase, and returns reps to the target or range minimum. Smaller configured steps are allowed. Percentage-based lifts, timed sets, AMRAP, segmented sets, assistance, bands and bodyweight remain manual. Changes are previewed and only apply to untouched, unfinished sets. Existing active sessions from older releases are preserved without backfilling or migration. Resuming any workout does not regenerate its values.
 
 Firestore rule tests require Java 21:
 
