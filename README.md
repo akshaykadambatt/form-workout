@@ -14,7 +14,11 @@ A mobile-first workout journal for upper/lower training. Log your sets, adjust w
 - A nine-week, 54-session upper/lower sequence that advances when you finish a workout. Rest days leave the next session waiting.
 - Exercise photos, movement guides, tempo notes, supersets, dropsets, and timed sets.
 - Editable exercises, set counts, rep targets, and workout order.
-- A color-coded training calendar, session review, and JSON export.
+- Explicit Start, Pause, Resume, and Finish controls. Finishing never starts another workout.
+- Swipeable day cards and a monthly calendar with one upper/lower color per date.
+- Full history with view, set editing, date/name editing, and recoverable deletion.
+- Five account-synced themes with individual palettes, corner shapes, and light/dark appearances.
+- JSON export of your journal and device recovery copies.
 - Google sign-in required for logging, private Firebase sync, and offline persistence for signed-in accounts.
 - Automatic upload of older device-only workouts, with existing cloud records protected from overwrite.
 - Logout waits for pending saves; separate device recovery backups remain available for export.
@@ -37,7 +41,7 @@ To use a separate Firebase project, register a web app and replace `src/firebase
 
 React, TypeScript, Vite, Firebase Authentication, Cloud Firestore, Lucide, Roboto, and vite-plugin-pwa.
 
-User data is stored under `users/{uid}`. Sessions retain a snapshot of their exercise prescriptions, so later routine edits do not alter previous workouts. Individual sets are updated separately; simultaneous edits to the same set use last-write-wins behavior. Stable cycle/session IDs prevent duplicate records from retried writes.
+User data is stored under `users/{uid}`. Sessions retain a snapshot of their exercise prescriptions, so later routine edits do not alter previous workouts. Individual sets are updated separately; simultaneous edits to the same set use last-write-wins behavior. Each new session gets a unique ID, retained for all subsequent writes. Repeating a program slot never replaces its previous log. Workout dates are stored as local calendar dates with the original start timestamp and timezone; editing a date changes only the calendar assignment. Deleted sessions retain their sets and can be restored from History. Completed sessions, including deleted ones, retain the sequence position; older unfinished sessions stay paused until explicitly resumed.
 
 After an initial online visit, the app caches its shell, routine, fonts, and reference photos. Sign-in requires a connection; signed-in workout edits can be queued offline and synchronized later. **Saved to Firebase** is shown only once the listeners have server data and no writes are pending. Logout waits for acknowledgement and leaves the account signed in if saves fail or take too long. Local caches and recovery copies are not deleted on logout. Let one device finish syncing before starting a different session on another device.
 
@@ -50,7 +54,7 @@ npm run build
 
 The behavior tests cover program order, weekly changes, segmented sets, duration and AMRAP targets, validation, skipped sets, cycle rollover, previous weights and reps, unit changes, exercise ordering, progression eligibility, and protection of edited or completed sets.
 
-Store integration tests use a simulated Firebase adapter to verify signed-out write protection, automatic device import, conflict and race handling, independent recovery backups, and logout during pending or failed writes. They never access production records.
+Store integration tests use a simulated Firebase adapter to verify signed-out write protection, automatic device import, conflict and race handling, independent recovery backups, logout during pending or failed writes, date editing, deletion/restoration, explicit session lifecycle, and isolated theme updates. They never access production records.
 
 ## Progression suggestions
 

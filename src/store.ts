@@ -3,7 +3,7 @@ import {initializeApp,getApps} from 'firebase/app';
 import {getAuth,GoogleAuthProvider,signInWithPopup,onAuthStateChanged,signOut,type User} from 'firebase/auth';
 import {initializeFirestore,getFirestore,persistentLocalCache,persistentMultipleTabManager,collection,doc,onSnapshot,setDoc,updateDoc,writeBatch,runTransaction,waitForPendingWrites} from 'firebase/firestore';
 import config from './firebase-config.json';
-import {defaults,type Settings,type Session,type SetLog,nextPosition,completeSession} from './model';
+import {defaults,type Settings,type Session,type SetLog,nextPosition,completeSession,activeSession,sessionOnDate,validDate,dateKey} from './model';
 import {readLocal,writeLocal,preserveBackup,deviceImportPlan} from './device-journal';
 const existing=getApps()[0];
 const app=existing||initializeApp(config);
@@ -44,7 +44,7 @@ export function useWorkoutStore(){
   const listenError=(e:Error)=>{if(live){setError(`Firebase could not be opened: ${e.message}`);setSyncFailed(true);}};
   const stopSettings=onSnapshot(doc(db,'users',scope,'profile','settings'),{includeMetadataChanges:true},s=>{
    if(!live)return;
-   if(s.exists())setSettings(s.data() as Settings);else if(!s.metadata.fromCache)setSettings(defaults);
+   if(s.exists())setSettings({...defaults,...s.data()} as Settings);else if(!s.metadata.fromCache)setSettings(defaults);
    setCloud(old=>({...old,settings:!s.metadata.fromCache,settingsPending:s.metadata.hasPendingWrites}));a=true;loaded();
   },listenError);
   const stopSessions=onSnapshot(collection(db,'users',scope,'sessions'),{includeMetadataChanges:true},s=>{
@@ -78,9 +78,19 @@ export function useWorkoutStore(){
   catch{setError('Could not save a recovery copy. Free device storage or export your data before continuing.');return false;}
  }
  function saveSettings(next:Settings){if(!canWrite()||!backup(undefined,next))return;setSettings(next);track(setDoc(doc(db,'users',scope,'profile','settings'),next));}
- function addSession(s:Session){if(!canWrite()||!backup(s))return;setSessions(old=>[...old,s]);track(setDoc(doc(db,'users',scope,'sessions',s.id),pack(s)));}
+ function saveTheme(theme:string){
+  if(!canWrite()||!backup(undefined,{...journal.current.settings,theme}))return;
+  setSettings(old=>({...old,theme}));track(setDoc(doc(db,'users',scope,'profile','settings'),{theme},{merge:true}));
+ }
+ function addSession(s:Session){
+  if(!canWrite())return false;
+  if(activeSession(journal.current.sessions)){setError('Finish or pause your current session before starting another.');return false;}
+  if(sessionOnDate(journal.current.sessions,s.date)){setError('A workout is already logged on this date. Open it from History.');return false;}
+  if(!backup(s))return false;
+  setSessions(old=>[...old,s]);track(setDoc(doc(db,'users',scope,'sessions',s.id),pack(s)));return true;
+ }
  function editSet(session:Session,exerciseIndex:number,setIndex:number,next:SetLog){
-  if(!canWrite())return;
+  if(!canWrite()||session.deletedAt)return;
   const current=journal.current.sessions.find(s=>s.id===session.id)||session;
   const updated={...current,exercises:current.exercises.map((e,i)=>i!==exerciseIndex?e:{...e,sets:e.sets.map((v,j)=>j===setIndex?next:v)})};
   if(!backup(updated))return;
@@ -95,13 +105,39 @@ export function useWorkoutStore(){
   track(updateDoc(doc(db,'users',scope,'sessions',session.id),{exercises:exercises.map(x=>({exercise:x.exercise,setIds:x.sets.map(s=>s.id)}))}));
  }
  function finish(s:Session){
-  if(s.finishedAt||!canWrite())return;
-  const finished=completeSession(s),next={...settings,...nextPosition(s)};
-  if(!backup(finished,next))return;
+  if(!canWrite())return false;
+  const current=journal.current.sessions.find(x=>x.id===s.id);
+  if(!current||current.finishedAt||current.deletedAt)return false;
+  const finished=completeSession(current),next={...journal.current.settings,...nextPosition(current),sequenceChosenAt:finished.finishedAt!};
+  if(!backup(finished,next))return false;
   setSessions(old=>old.map(x=>x.id===s.id?finished:x));setSettings(next);
   const batch=writeBatch(db);
-  batch.update(doc(db,'users',scope,'sessions',s.id),{finishedAt:finished.finishedAt,...Object.fromEntries(finished.exercises.flatMap(e=>e.sets.map(x=>[`sets.${x.id}`,x])))});
-  batch.set(doc(db,'users',scope,'profile','settings'),next);track(batch.commit());
+  batch.update(doc(db,'users',scope,'sessions',s.id),{status:'completed',finishedAt:finished.finishedAt,...Object.fromEntries(finished.exercises.flatMap(e=>e.sets.map(x=>[`sets.${x.id}`,x])))});
+  batch.set(doc(db,'users',scope,'profile','settings'),next);track(batch.commit());return true;
+ }
+ function patchSession(session:Session,patch:Partial<Session>){
+  if(!canWrite())return false;
+  const current=journal.current.sessions.find(s=>s.id===session.id);if(!current)return false;
+  const next={...current,...patch};if(!backup(next))return false;
+  setSessions(old=>old.map(s=>s.id===session.id?{...s,...patch}:s));
+  track(updateDoc(doc(db,'users',scope,'sessions',session.id),patch));return true;
+ }
+ function updateSessionDetails(session:Session,details:{date:string;label:string}){
+  if(!validDate(details.date)||details.date>dateKey()){setError('Choose a valid workout date, today or earlier.');return false;}
+  if(journal.current.sessions.some(s=>s.id!==session.id&&!s.deletedAt&&s.date===details.date)){setError('That date already has a workout. Choose another date.');return false;}
+  return patchSession(session,{date:details.date,label:details.label.trim().slice(0,100)});
+ }
+ function deleteSession(session:Session){return patchSession(session,{deletedAt:Date.now(),status:session.finishedAt?'completed':'paused'});}
+ function restoreSession(session:Session){
+  if(sessionOnDate(journal.current.sessions,session.date)){setError('That date already has a workout. Edit the deleted session’s date before restoring it.');return false;}
+  return patchSession(session,{deletedAt:null,status:session.finishedAt?'completed':'paused'});
+ }
+ function pauseSession(session:Session){return patchSession(session,{status:'paused'});}
+ function resumeSession(session:Session){
+  if(session.finishedAt||session.deletedAt)return false;
+  const active=activeSession(journal.current.sessions);
+  if(active&&active.id!==session.id){setError('Pause or finish the current session first.');return false;}
+  return patchSession(session,{status:'active',resumedAt:Date.now()});
  }
  async function login(){try{setError('');const provider=new GoogleAuthProvider();provider.setCustomParameters({prompt:'select_account'});await signInWithPopup(auth,provider);}catch(e:any){setError(e.code==='auth/popup-blocked'?'Allow the Google sign-in window, then try again.':e.message);}}
  async function importDevice(){
@@ -131,10 +167,10 @@ export function useWorkoutStore(){
     Promise.all([...pending.current,waitForPendingWrites(db)]),
     new Promise((_,reject)=>{timeout=setTimeout(()=>reject(new Error('Still waiting for Firebase. Connect to the internet and try again.')),10000);}),
    ]);
-   if(failed.current)throw new Error('A save failed. Your device recovery copy is available under Routine.');
+   if(failed.current)throw new Error('A save failed. Your device recovery copy is available under Settings.');
    await signOut(auth);
   }catch(e:any){setError(`You are still signed in. ${e.message}`);}
   finally{clearTimeout(timeout);setLoggingOut(false);}
  }
- return{user,ready,settings,sessions,status,error,setError,saveSettings,addSession,editSet,updateLivePreferences,finish,login,logout,hasDeviceWorkouts:needsImport,importDevice,deviceConflicts:!!user?plan.conflicts.length:0};
+ return{user,ready,settings,sessions,status,error,setError,saveSettings,saveTheme,addSession,editSet,updateLivePreferences,finish,login,logout,updateSessionDetails,deleteSession,restoreSession,pauseSession,resumeSession,hasDeviceWorkouts:needsImport,importDevice,deviceConflicts:!!user?plan.conflicts.length:0};
 }

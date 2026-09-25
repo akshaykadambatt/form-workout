@@ -1,14 +1,14 @@
 // @vitest-environment jsdom
 import {beforeEach,afterEach,describe,it,expect,vi} from 'vitest';
 import {renderHook,act,waitFor,cleanup} from '@testing-library/react';
-import {createSession,defaults} from '../src/model';
+import {createSession,defaults,activeSession} from '../src/model';
 import {readLocal,writeLocal,exportDeviceCopies,preserveBackup} from '../src/device-journal';
 const mock=vi.hoisted(()=>({
  auth:{currentUser:null as any},authListener:((_:any)=>{}) as (u:any)=>void,
  rows:new Map<string,any>(),listeners:new Map<string,Function>(),cache:false,gate:null as Promise<void>|null,beforeTransaction:null as (()=>void)|null,
  emit:()=>{},
 }));
-const firestore=vi.hoisted(()=>({setDoc:vi.fn(),updateDoc:vi.fn(),runTransaction:vi.fn(),waitForPendingWrites:vi.fn()}));
+const firestore=vi.hoisted(()=>({setDoc:vi.fn(),updateDoc:vi.fn(),runTransaction:vi.fn(),waitForPendingWrites:vi.fn(),writeBatch:vi.fn()}));
 const authMocks=vi.hoisted(()=>({signOut:vi.fn(),signInWithPopup:vi.fn()}));
 vi.mock('firebase/app',()=>({getApps:()=>[],initializeApp:()=>({})}));
 vi.mock('firebase/auth',()=>({getAuth:()=>mock.auth,GoogleAuthProvider:class{setCustomParameters(){}},signInWithPopup:authMocks.signInWithPopup,signOut:authMocks.signOut,onAuthStateChanged:(_:any,cb:any)=>{mock.authListener=cb;return()=>{};}}));
@@ -16,7 +16,7 @@ vi.mock('firebase/firestore',()=>({
  initializeFirestore:()=>({}),getFirestore:()=>({}),persistentLocalCache:()=>({}),persistentMultipleTabManager:()=>({}),
  doc:(_:any,...parts:string[])=>parts.join('/'),collection:(_:any,...parts:string[])=>parts.join('/'),
  onSnapshot:(path:string,_:any,cb:Function)=>{mock.listeners.set(path,cb);mock.emit();return()=>mock.listeners.delete(path);},
- ...firestore,writeBatch:()=>({set:()=>{},update:()=>{},commit:()=>Promise.resolve()}),
+ ...firestore,
 }));
 import {useWorkoutStore} from '../src/store';
 const owner={uid:'owner',email:'akshayakn6@gmail.com'};
@@ -33,18 +33,55 @@ beforeEach(()=>{
   if(path.endsWith('/settings'))cb({exists:()=>mock.rows.has(path),data:()=>mock.rows.get(path),metadata});
   else cb({docs:[...mock.rows].filter(([key])=>key.startsWith(path+'/')).map(([,v])=>({data:()=>v})),metadata});
  });
- firestore.setDoc.mockImplementation(async(path,data)=>{mock.rows.set(path,data);mock.emit();await mock.gate;});
+ firestore.setDoc.mockImplementation(async(path,data,options)=>{mock.rows.set(path,options?.merge?{...mock.rows.get(path),...data}:data);mock.emit();await mock.gate;});
  firestore.updateDoc.mockImplementation(async(path,data)=>{const old=mock.rows.get(path);const next=structuredClone(old);Object.entries(data).forEach(([key,v])=>{if(key.startsWith('sets.'))next.sets[key.slice(5)]=v;else next[key]=v;});mock.rows.set(path,next);mock.emit();await mock.gate;});
  firestore.runTransaction.mockImplementation(async(_:any,callback:Function)=>{
   mock.beforeTransaction?.();const writes:Array<[string,any]>=[];
   await callback({get:async(path:string)=>({exists:()=>mock.rows.has(path),data:()=>mock.rows.get(path)}),set:(path:string,data:any)=>writes.push([path,data])});
   writes.forEach(([path,data])=>mock.rows.set(path,data));mock.emit();
  });
+ firestore.writeBatch.mockImplementation(()=>{
+  const writes:Array<()=>Promise<any>>=[];
+  return{set:(path:string,data:any)=>writes.push(()=>firestore.setDoc(path,data)),update:(path:string,data:any)=>writes.push(()=>firestore.updateDoc(path,data)),commit:()=>Promise.all(writes.map(write=>write()))};
+ });
  firestore.waitForPendingWrites.mockImplementation(()=>mock.gate||Promise.resolve());
  authMocks.signOut.mockImplementation(async()=>{mock.auth.currentUser=null;mock.authListener(null);});
 });
 afterEach(()=>{cleanup();vi.useRealTimers();});
 describe('Firebase-first workout journal',()=>{
+ it('edits only date and label metadata while keeping every set and the original timestamp',async()=>{
+  const s=createSession(defaults,[],new Date(2026,0,1));s.exercises[0].sets[0].segments[0].weight=125;mock.rows.set(sessionPath(s.id),packed(s));
+  const {result}=mount();await waitFor(()=>expect(result.current.ready).toBe(true));
+  await act(async()=>{expect(result.current.updateSessionDetails(s,{date:'2026-01-02',label:'  Leg day  '})).toBe(true);});
+  expect(firestore.updateDoc).toHaveBeenLastCalledWith(sessionPath(s.id),{date:'2026-01-02',label:'Leg day'});
+  const saved=mock.rows.get(sessionPath(s.id));expect(saved.sets).toEqual(packed(s).sets);expect(saved.startedAt).toBe(s.startedAt);
+  act(()=>{expect(result.current.updateSessionDetails(s,{date:'2026-02-30',label:''})).toBe(false);});
+ });
+ it('deletes and restores without losing sets or importing an older device copy over the deletion',async()=>{
+  const s=createSession(defaults,[],new Date(2026,0,1));s.exercises[0].sets[0].segments[0].weight=125;writeLocal('guest',{settings:defaults,sessions:[s]});mock.rows.set(sessionPath(s.id),packed(s));
+  const {result}=mount();await waitFor(()=>expect(result.current.ready).toBe(true));
+  await act(async()=>{expect(result.current.deleteSession(s)).toBe(true);});
+  expect(mock.rows.get(sessionPath(s.id)).sets).toEqual(packed(s).sets);expect(result.current.sessions[0].deletedAt).toBeTruthy();expect(firestore.runTransaction).not.toHaveBeenCalled();
+  await act(async()=>{expect(result.current.restoreSession(result.current.sessions[0])).toBe(true);});
+  expect(result.current.sessions[0].deletedAt).toBeNull();expect(result.current.sessions[0].status).toBe('paused');expect(activeSession(result.current.sessions)).toBeNull();expect(mock.rows.get(sessionPath(s.id)).sets).toEqual(packed(s).sets);
+ });
+ it('finishes the latest set values and stays idle instead of reviving an old session',async()=>{
+  const old=createSession(defaults,[],new Date(2026,0,1)),s=createSession({...defaults,position:3},[],new Date(2026,0,2));mock.rows.set(sessionPath(old.id),packed(old));mock.rows.set(sessionPath(s.id),packed(s));
+  const {result}=mount();await waitFor(()=>expect(result.current.ready).toBe(true));
+  await act(async()=>{result.current.editSet(s,0,0,{...s.exercises[0].sets[0],done:true,segments:[{weight:150,reps:8}]});expect(result.current.finish(s)).toBe(true);});
+  expect(activeSession(result.current.sessions)).toBeNull();expect(result.current.sessions).toHaveLength(2);expect(result.current.settings.position).toBe(4);
+  expect(mock.rows.get(sessionPath(s.id)).sets[s.exercises[0].sets[0].id].segments).toEqual([{weight:150,reps:8}]);expect(mock.rows.get(sessionPath(old.id))).toEqual(packed(old));
+ });
+ it('blocks duplicate dates and starting alongside an active session',async()=>{
+  const s=createSession(defaults,[],new Date(2026,0,1));mock.rows.set(sessionPath(s.id),packed(s));const {result}=mount();await waitFor(()=>expect(result.current.ready).toBe(true));
+  act(()=>{expect(result.current.addSession(createSession(defaults,[],new Date(2026,0,2)))).toBe(false);});
+  await act(async()=>{result.current.pauseSession(s);});
+  act(()=>{expect(result.current.addSession(createSession(defaults,[],new Date(2026,0,1)))).toBe(false);});expect(result.current.sessions).toHaveLength(1);
+ });
+ it('updates theme independently without overwriting program settings or workouts',async()=>{
+  const s=createSession(defaults,[]);mock.rows.set(sessionPath(s.id),packed(s));mock.rows.set(settingsPath,{...defaults,position:8,onboarded:true});const {result}=mount();await waitFor(()=>expect(result.current.ready).toBe(true));
+  await act(async()=>result.current.saveTheme('blueprint'));expect(firestore.setDoc).toHaveBeenCalledWith(settingsPath,{theme:'blueprint'},{merge:true});expect(result.current.settings.position).toBe(8);expect(result.current.settings.theme).toBe('blueprint');expect(result.current.sessions).toMatchObject([s]);expect(mock.rows.get(sessionPath(s.id))).toEqual(packed(s));
+ });
  it('keeps separate recovery copies for conflicting occurrences of one program slot',()=>{
   const first=createSession(defaults,[],new Date(2026,0,1)),second=createSession(defaults,[],new Date(2026,0,2));
   preserveBackup('owner',{settings:defaults,sessions:[first]});preserveBackup('owner',{settings:defaults,sessions:[second]},second);
@@ -66,13 +103,13 @@ describe('Firebase-first workout journal',()=>{
   expect(result.current.status).toBe('Saved to Firebase');expect(firestore.runTransaction).toHaveBeenCalledTimes(1);
  });
  it('never overwrites a cloud record with a conflicting guest occurrence',async()=>{
-  const guest=createSession(defaults,[],new Date(2026,0,1)),cloud=createSession(defaults,[],new Date(2026,0,2));
+  const guest=createSession(defaults,[],new Date(2026,0,1)),cloud=createSession(defaults,[],new Date(2026,0,2));cloud.id=guest.id;
   writeLocal('guest',{settings:defaults,sessions:[guest]});mock.rows.set(sessionPath(cloud.id),packed(cloud));
   const {result}=mount();await waitFor(()=>expect(result.current.ready).toBe(true));
   expect(result.current.deviceConflicts).toBe(1);expect(firestore.runTransaction).not.toHaveBeenCalled();expect(mock.rows.get(sessionPath(cloud.id))).toEqual(packed(cloud));expect(readLocal('guest').sessions[0]).toEqual(guest);
  });
  it('checks for concurrent cloud creation inside the import transaction',async()=>{
-  const guest=createSession(defaults,[],new Date(2026,0,1)),cloud=createSession(defaults,[],new Date(2026,0,2));
+  const guest=createSession(defaults,[],new Date(2026,0,1)),cloud=createSession(defaults,[],new Date(2026,0,2));cloud.id=guest.id;
   writeLocal('guest',{settings:defaults,sessions:[guest]});mock.beforeTransaction=()=>mock.rows.set(sessionPath(cloud.id),packed(cloud));
   const {result}=mount();await waitFor(()=>expect(result.current.ready).toBe(true));expect(mock.rows.get(sessionPath(cloud.id))).toEqual(packed(cloud));
  });
