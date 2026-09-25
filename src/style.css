@@ -25,3 +25,5 @@
 .progression-list p{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:13px;padding:4px 0;color:#cbd4c2}
 .app:has(.floating-tools>* ) main{padding-bottom:200px}
 @media(max-width:700px){.floating-tools{right:16px;bottom:calc(86px + env(safe-area-inset-bottom))}.toast{top:calc(10px + env(safe-area-inset-top));bottom:auto;min-width:0}.app:has(.floating-tools>*) main{padding-bottom:calc(260px + env(safe-area-inset-bottom))}}
+
+.signin-required{max-width:540px;margin:32px auto;padding:30px;border-radius:28px;background:var(--surface);display:grid;gap:22px}.signin-required>svg{color:var(--lime)}.signin-required p{color:var(--muted);font-size:15px}.signin-required .text-button{justify-content:center;min-height:44px}

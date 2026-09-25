@@ -15,7 +15,9 @@ A mobile-first workout journal for upper/lower training. Log your sets, adjust w
 - Exercise photos, movement guides, tempo notes, supersets, dropsets, and timed sets.
 - Editable exercises, set counts, rep targets, and workout order.
 - A color-coded training calendar, session review, and JSON export.
-- Google sign-in, private Firebase sync, and offline persistence.
+- Google sign-in required for logging, private Firebase sync, and offline persistence for signed-in accounts.
+- Automatic upload of older device-only workouts, with existing cloud records protected from overwrite.
+- Logout waits for pending saves; separate device recovery backups remain available for export.
 - Home-screen installation with cached fonts and exercise references.
 
 ## Getting started
@@ -27,7 +29,7 @@ npm ci
 npm run dev
 ```
 
-The personal deployment is restricted to its owner's Google account. Device-only logging is also available. In the app, choose a starting week and session under **Routine**, then enter your own weights as you train.
+The personal deployment is restricted to its owner's Google account. Sign in before logging. Workouts from the older device-only mode are uploaded automatically when signed in and online; original device copies are retained. Existing cloud records are never replaced by this import. Conflicting program slots are flagged for review and can be exported under **Routine → Export device backups**. In the app, choose a starting week and session under **Routine**, then enter your own weights as you train.
 
 To use a separate Firebase project, register a web app and replace `src/firebase-config.json` with its web configuration. Update the owner email in `src/store.ts`, `firestore.rules`, and `tests/rules-check.mjs`, along with the Google provider settings in `firebase.json`. Deploy rules before using cloud storage.
 
@@ -37,7 +39,7 @@ React, TypeScript, Vite, Firebase Authentication, Cloud Firestore, Lucide, Robot
 
 User data is stored under `users/{uid}`. Sessions retain a snapshot of their exercise prescriptions, so later routine edits do not alter previous workouts. Individual sets are updated separately; simultaneous edits to the same set use last-write-wins behavior. Stable cycle/session IDs prevent duplicate records from retried writes.
 
-After an initial online visit, the app caches its shell, routine, fonts, and reference photos. Sign-in requires a connection; workout edits can be saved offline and synchronized later. Let one device finish syncing before starting a different session on another device.
+After an initial online visit, the app caches its shell, routine, fonts, and reference photos. Sign-in requires a connection; signed-in workout edits can be queued offline and synchronized later. **Saved to Firebase** is shown only once the listeners have server data and no writes are pending. Logout waits for acknowledgement and leaves the account signed in if saves fail or take too long. Local caches and recovery copies are not deleted on logout. Let one device finish syncing before starting a different session on another device.
 
 ## Tests
 
@@ -47,6 +49,8 @@ npm run build
 ```
 
 The behavior tests cover program order, weekly changes, segmented sets, duration and AMRAP targets, validation, skipped sets, cycle rollover, previous weights and reps, unit changes, exercise ordering, progression eligibility, and protection of edited or completed sets.
+
+Store integration tests use a simulated Firebase adapter to verify signed-out write protection, automatic device import, conflict and race handling, independent recovery backups, and logout during pending or failed writes. They never access production records.
 
 ## Progression suggestions
 
