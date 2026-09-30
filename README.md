@@ -14,6 +14,7 @@ A mobile-first workout journal for upper/lower training. Log your sets, adjust w
 - A nine-week, 54-session upper/lower sequence that advances when you finish a workout. Rest days leave the next session waiting.
 - Exercise photos, movement guides, tempo notes, supersets, dropsets, and timed sets.
 - Editable exercises, set counts, rep targets, and workout order.
+- Choose Upper 1/2/3 or Lower 1/2/3 before each workout, with an optional program-week selector and exercise preview. Choices stay local until you start; the next suggestion follows the workout you finish.
 - Explicit Start, Pause, Resume, and Finish controls. Finishing never starts another workout.
 - Swipeable day cards and a monthly calendar with one upper/lower color per date.
 - Full history with view, set editing, date/name editing, and recoverable deletion.

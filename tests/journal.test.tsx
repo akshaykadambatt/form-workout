@@ -33,8 +33,8 @@ describe('daily journal lifecycle',()=>{
 function dayProps(){return{date:'2026-09-25',today:'2026-09-25',session:null,template:program[4],state:'',active:null,ready:true,review:false,onDay:vi.fn(),onToday:vi.fn(),onStart:vi.fn(),onResume:vi.fn(),onPause:vi.fn(),onEdit:vi.fn()};}
 describe('day browsing and history controls',()=>{
  it('offers explicit start today and keeps tomorrow blank',()=>{
-  const props=dayProps(),{rerender}=render(<DayCard {...props}/>);fireEvent.click(screen.getByRole('button',{name:'Start session'}));expect(props.onStart).toHaveBeenCalledOnce();
-  rerender(<DayCard {...props} date="2026-09-26"/>);expect(screen.queryByRole('button',{name:'Start session'})).toBeNull();expect(screen.getByText('A blank page. Nothing has been logged.')).toBeTruthy();
+  const props=dayProps(),{rerender}=render(<DayCard {...props}/>);fireEvent.click(screen.getByRole('button',{name:'Choose workout'}));expect(props.onStart).toHaveBeenCalledOnce();
+  rerender(<DayCard {...props} date="2026-09-26"/>);expect(screen.queryByRole('button',{name:'Choose workout'})).toBeNull();expect(screen.getByText('A blank page. Nothing has been logged.')).toBeTruthy();
  });
  it('swipes horizontally through dates without treating vertical scrolling as a swipe',()=>{
   const props=dayProps(),{container}=render(<DayCard {...props}/>),hero=container.querySelector('.day-hero')!;
