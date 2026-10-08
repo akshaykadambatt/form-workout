@@ -5,7 +5,6 @@ import {render,screen,fireEvent,cleanup,act} from '@testing-library/react';
 import {existsSync,readFileSync} from 'node:fs';
 import {program} from '../src/model';
 import {ExerciseMotion,motionCatalog,movementFor} from '../src/ExerciseMotion';
-import {diagrams,geometry,poseAt} from '../src/movement-diagrams';
 
 let intersect:(entries:{isIntersecting:boolean}[])=>void;
 let reduced=false;
@@ -24,27 +23,19 @@ it('covers every programmed movement, ships its media and includes video license
  expect(ids.size).toBe(77);
  expect(Object.keys(motionCatalog).sort()).toEqual([...ids].sort());
  const credits=readFileSync('public/motion/credits.txt','utf8');
- for(const id of ids){const demo=motionCatalog[id];if(demo.type==='video'){
-  expect(existsSync('public'+demo.src)).toBe(true);expect(existsSync('public'+demo.poster)).toBe(true);
-  expect(credits).toContain(demo.source);expect(credits).toContain(demo.author);expect(demo.license).toBe('CC BY-SA 4.0');
- }else{for(const rig of demo.rigs)expect(diagrams[rig],id).toBeDefined();if(demo.rigs.length>1)expect(demo.parts?.length).toBe(demo.rigs.length);}}
+ for(const id of ids){const entry=motionCatalog[id];const clips=entry.type==='sequence'?entry.parts.map(p=>p.demo):[entry];
+  for(const demo of clips){expect(credits).toContain(demo.source);expect(credits).toContain(demo.author);
+   if(demo.type==='video'){
+    expect(existsSync('public'+demo.src)).toBe(true);expect(existsSync('public'+demo.poster)).toBe(true);
+    expect(['CC BY-SA 4.0','Free app-use licence']).toContain(demo.license);
+   }else{expect(demo.type).toBe('youtube');expect(demo.videoId).toMatch(/^[\w-]{11}$/);expect(demo.source).toBe(`https://www.youtube.com/watch?v=${demo.videoId}`);}
+  }
+ }
 });
 it('uses a substituted movement reference and safely handles unknown references',()=>{
  expect(movementFor({id:'back-squat',referenceId:'deadlift'})).toBe(motionCatalog.deadlift);
  render(<ExerciseMotion exercise={{id:'back-squat',name:'Custom',referenceId:'not-in-catalog'}}/>);
  expect(screen.getByText(/Choose a reference movement/)).toBeTruthy();
-});
-it('keeps all animated poses finite and bounded, loops smoothly, and holds planks steady',()=>{
- for(const d of Object.values(diagrams)){
-  expect(poseAt(d,0)).toEqual(poseAt(d,1));
-  for(let i=0;i<=40;i++){
-   const pose=poseAt(d,i/40),g=geometry(d,pose);
-   for(const pt of Object.values(pose)){expect(pt[0]).toBeGreaterThan(0);expect(pt[0]).toBeLessThan(320);expect(pt[1]).toBeGreaterThanOrEqual(0);expect(pt[1]).toBeLessThan(240);}
-   expect(JSON.stringify(g)).not.toMatch(/NaN|Infinity/);
-  }
-  if(!d.hold)expect(poseAt(d,0)).not.toEqual(poseAt(d,.5));
- }
- expect(poseAt(diagrams.plank,0)).toEqual(poseAt(diagrams.plank,.5));
 });
 it('starts paused for reduced motion and lets the user play, slow down and pause',()=>{
  reduced=true;render(<ExerciseMotion exercise={exercise('back-squat')}/>);
@@ -73,9 +64,45 @@ it('offers a retry after a video error and handles blocked autoplay',async()=>{
  await act(async()=>intersect([{isIntersecting:true}]));
  expect(screen.getByRole('button',{name:'Play demonstration'})).toBeTruthy();
 });
-it('lets combination exercises show each movement separately',()=>{
- render(<ExerciseMotion exercise={exercise('pendlay-row-barbell-bent-over-row')}/>);
+it('loads YouTube only after a tap and removes the player when hidden without restarting automatically',async()=>{
+ const {container,rerender}=render(<ExerciseMotion exercise={exercise('good-morning')}/>);
+ expect(container.querySelector('iframe')).toBeNull();
+ await act(async()=>intersect([{isIntersecting:true}]));
+ fireEvent.click(screen.getByRole('button',{name:/Play .* video/}));
+ const iframe=container.querySelector('iframe')!;
+ expect(iframe.src).toContain('youtube-nocookie.com/embed/YA-h3n9L4YU');
+ expect(iframe.src).toContain('playsinline=1');
+ expect(iframe.getAttribute('referrerpolicy')).toBe('strict-origin-when-cross-origin');
+ expect(screen.getByRole('link',{name:'Open video'}).getAttribute('href')).toBe('https://www.youtube.com/watch?v=YA-h3n9L4YU');
+ rerender(<ExerciseMotion exercise={exercise('good-morning')} allowed={false}/>);
+ expect(container.querySelector('iframe')).toBeNull();
+ rerender(<ExerciseMotion exercise={exercise('good-morning')}/>);
+ expect(container.querySelector('iframe')).toBeNull();
+ fireEvent.click(screen.getByRole('button',{name:/Play .* video/}));
+ await act(async()=>intersect([{isIntersecting:false}]));
+ expect(container.querySelector('iframe')).toBeNull();
+ await act(async()=>intersect([{isIntersecting:true}]));
+ expect(container.querySelector('iframe')).toBeNull();
+});
+it('removes embedded playback when the app enters the background',async()=>{
+ const {container}=render(<ExerciseMotion exercise={exercise('good-morning')}/>);
+ await act(async()=>intersect([{isIntersecting:true}]));
+ fireEvent.click(screen.getByRole('button',{name:/Play .* video/}));
+ expect(container.querySelector('iframe')).not.toBeNull();
+ vi.spyOn(document,'hidden','get').mockReturnValue(true);
+ fireEvent(document,new Event('visibilitychange'));
+ expect(container.querySelector('iframe')).toBeNull();
+});
+it('lets combination exercises show each video separately and resets the previous player',async()=>{
+ const {container,rerender}=render(<ExerciseMotion exercise={exercise('pendlay-row-barbell-bent-over-row')}/>);
+ await act(async()=>intersect([{isIntersecting:true}]));
+ fireEvent.click(screen.getByRole('button',{name:/Play .* video/}));
+ expect(container.querySelector('iframe')!.src).toContain('axoeDmW0oAY');
  fireEvent.click(screen.getByRole('button',{name:'Bent-over row',exact:true}));
  expect(screen.getByRole('button',{name:'Bent-over row',exact:true}).getAttribute('aria-pressed')).toBe('true');
- expect(screen.getByText(/Hold your torso steady/)).toBeTruthy();
+ expect(container.querySelector('iframe')).toBeNull();
+ expect(screen.getByRole('link',{name:'Open video'}).getAttribute('href')).toContain('FWJR5Ve8bnQ');
+ rerender(<ExerciseMotion exercise={exercise('dumbbell-front-raise-lateral-raise')}/>);
+ fireEvent.click(screen.getByRole('button',{name:'Lateral raise',exact:true}));
+ expect(container.querySelector('video')!.getAttribute('src')).toBe('/motion/wger-348.mp4');
 });

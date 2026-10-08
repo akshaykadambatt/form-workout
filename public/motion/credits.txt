@@ -1,9 +1,12 @@
 # Movement demonstration credits
 
-Video demonstrations are by Goulart, provided through wger under CC BY-SA 4.0.
+Wger video demonstrations are by Goulart, provided through wger under CC BY-SA 4.0.
 License: https://creativecommons.org/licenses/by-sa/4.0/
 Changes: resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed.
 The adapted clips remain available under CC BY-SA 4.0. These media terms do not relicense the app code.
+The walking lunge (206) and barbell incline press (538) clips also have their first two seconds trimmed.
+The bench press (73) clip has its first second trimmed.
+Reference photos and descriptions: https://github.com/yuhonas/free-exercise-db (Unlicense, as provided by that project).
 
 Bench Press
 File: /motion/wger-73.mp4
@@ -95,7 +98,168 @@ File: /motion/wger-371.mp4
 Source: https://wger.de/media/exercise-video/371/6aae16b4-01b9-4eb4-935c-3250f84d2c59.MOV
 Author: Goulart · License: CC BY-SA 4.0
 
-Vector illustrations: original Form artwork. Simplified movement-path illustrations; program-specific tempo, grip, assistance, band and partial-rep instructions remain alongside the demonstration.
-Reference photos and descriptions: https://github.com/yuhonas/free-exercise-db (Unlicense, as provided by that project).
-The walking lunge (206) and barbell incline press (538) clips also have their first two seconds trimmed.
-The bench press (73) clip has its first second trimmed.
+Your Move videos
+Free commercial app-use licence: https://ymove.app/free-exercise-videos
+These clips are part of Form; they may not be resold or redistributed as a standalone product or library.
+Changes: resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed.
+
+Barbell Back Squat — Your Move
+File: /motion/ymove-fd0eaa34-d14b-4421-b41c-1669f93253b3.mp4
+Source: https://ymove.app/api/free/fd0eaa34-d14b-4421-b41c-1669f93253b3
+
+Barbell Deadlift — Your Move
+File: /motion/ymove-b59952ca-1551-4c07-835d-ab78bfe9953c.mp4
+Source: https://ymove.app/api/free/b59952ca-1551-4c07-835d-ab78bfe9953c
+
+Single Arm Dumbbell Row - Legs apart — Your Move
+File: /motion/ymove-d3fece95-c7e2-4794-ba8f-65a5b3e30a28.mp4
+Source: https://ymove.app/api/free/d3fece95-c7e2-4794-ba8f-65a5b3e30a28
+
+Pec Deck Fly — Your Move
+File: /motion/ymove-4d197e26-766c-4c5c-b937-9918e56c5b9b.mp4
+Source: https://ymove.app/api/free/4d197e26-766c-4c5c-b937-9918e56c5b9b
+
+Leg Extension — Your Move
+File: /motion/ymove-af0c3d19-5ee2-4a19-8688-f8504bb33e3c.mp4
+Source: https://ymove.app/api/free/af0c3d19-5ee2-4a19-8688-f8504bb33e3c
+
+YouTube demonstrations
+Played through the original creator’s embedded YouTube player. Videos are not downloaded, modified or redistributed. Copyright remains with each creator. Source metadata checked 2026-10-08.
+
+How To: Barbell Stiff-Leg Deadlift — ScottHermanFitness
+Source: https://www.youtube.com/watch?v=1uDiW5--rAE
+
+The Good Morning — CrossFit
+Source: https://www.youtube.com/watch?v=YA-h3n9L4YU
+
+Cable Crunch: Do It Right! — Testosterone Nation
+Source: https://www.youtube.com/watch?v=ToJeyhydUxU
+
+How To: Lat Pulldown | 3 GOLDEN RULES — ScottHermanFitness
+Source: https://www.youtube.com/watch?v=CAwf7n6Luuc
+
+Supinated pull-down — Jean-Philippe Rioux
+Source: https://www.youtube.com/watch?v=kOQt1sfmgqw
+
+How To Build a Thick Back With Perfect Rowing Technique (Pendlay Row/ Helms Row) — Jeff Nippard
+Source: https://www.youtube.com/watch?v=axoeDmW0oAY
+
+How to do Shoulders Front Machine Side Lateral Raise correctly. Abawi Fit — Abawi Fit
+Source: https://www.youtube.com/watch?v=0FUpcwj_1z4
+
+2:1 Accentuated Eccentric Leg Extension — Testosterone Nation
+Source: https://www.youtube.com/watch?v=E_pTa-uagpE
+
+How To: Seated Single-Leg Extension (Cybex) — ScottHermanFitness
+Source: https://www.youtube.com/watch?v=I1F58vIjbvc
+
+Build Bigger Shoulders With Perfect Training Technique (The Overhead Press) — Jeff Nippard
+Source: https://www.youtube.com/watch?v=_RlRDWO2jfg
+
+How To: Close-Grip Barbell Bench Press — ScottHermanFitness
+Source: https://www.youtube.com/watch?v=nEF0bv2FW94
+
+Banded Chest Supported Rows — Testosterone Nation
+Source: https://www.youtube.com/watch?v=WJIt0SQekVU
+
+How to do Incline T Bar Row correctly? Avoid any injury. #75 — Abawi Fit
+Source: https://www.youtube.com/watch?v=sw1LwNZ3F_w
+
+Banded Chest Supported Rows — Testosterone Nation
+Source: https://www.youtube.com/watch?v=WJIt0SQekVU
+
+Exercise Index - Pull Through — mountaindog1
+Source: https://www.youtube.com/watch?v=WljI_Cg7ths
+
+How to Properly Use The Hip Abduction Machine With Good Form (Exercise Demonstration) — Gerardi Performance
+Source: https://www.youtube.com/watch?v=HngwgIoABFg
+
+Weighted Crunch — LivestrongWoman
+Source: https://www.youtube.com/watch?v=Pxkw6dUt_Ok
+
+How To Perform A Neutral Grip Pull Up — JPS Health & Fitness
+Source: https://www.youtube.com/watch?v=Zr8hHd2Q2Eo
+
+How To Build Huge Triceps with Optimal Training Technique — Jeff Nippard
+Source: https://www.youtube.com/watch?v=popGXI-qs98
+
+Movement Demo - The Deficit Deadlift — Rogue Fitness
+Source: https://www.youtube.com/watch?v=CpWsUsqBtN8
+
+How To: Hanging Leg-Lift — ScottHermanFitness
+Source: https://www.youtube.com/watch?v=hdng3Nm1x_E
+
+How To: Chest Press (Cybex) — ScottHermanFitness
+Source: https://www.youtube.com/watch?v=xUm0BiZCWlQ
+
+How To: Bulgarian Split Squat — ScottHermanFitness
+Source: https://www.youtube.com/watch?v=2C-uNgKwPLE
+
+EZ Bar Curl 21s — Nikkiey Stott
+Source: https://www.youtube.com/watch?v=adUowDy55LE
+
+How to Perform the PUSH PRESS  - Shoulder Exercise Tutorial — Buff Dudes Workouts
+Source: https://www.youtube.com/watch?v=ep30avTSMB0
+
+Get That Horseshoe Look with Cable Triceps Kickback — Rob Riches
+Source: https://www.youtube.com/watch?v=cvjnkqjxreg
+
+Big On The Basics: Back Raises with Pete Rubish — Animal
+Source: https://www.youtube.com/watch?v=GpG21_BpEfs
+
+How To Do The Barbell FLOOR PRESS — SET FOR SET
+Source: https://www.youtube.com/watch?v=gacJl2rHwtg
+
+Hammer Strength High Row Machine — MTSU Campus Recreation
+Source: https://www.youtube.com/watch?v=w6dxL2fmXRo
+
+Arnold Press - Shoulder Exercise - Proper Form Tutorial — Buff Dudes
+Source: https://www.youtube.com/watch?v=6Z15_WdXmVw
+
+Lying Cable Upright Row — Jacob Zemer
+Source: https://www.youtube.com/watch?v=xF-UVtZBASk
+
+Sliding Leg Curls on the Floor — Michael Reid
+Source: https://www.youtube.com/watch?v=RmsTFCQ3Qig
+
+The Perfect Push Up | Do it right! — Calisthenicmovement
+Source: https://www.youtube.com/watch?v=IODxDxX7oi4
+
+Great Replacement For Lunges | Try Step Ups (with form tutorial) — Beastmode Jones
+Source: https://www.youtube.com/watch?v=NcBM4Pl0ZU8
+
+Reverse Hypers — Men's Health
+Source: https://www.youtube.com/watch?v=3d9_W--eUcI
+
+How To: Plank — ScottHermanFitness
+Source: https://www.youtube.com/watch?v=pSHjTRCQxIw
+
+How To Do A Single Arm Lat Pulldown | Exercise Demonstration Video and Guide — Live Lean TV Daily Exercises
+Source: https://www.youtube.com/watch?v=MTd0vKkvwfM
+
+California Press — robkingfitness
+Source: https://www.youtube.com/watch?v=fCUeeaWBBSs
+
+Reverse Crunch - Exercise Demo — Group HIIT
+Source: https://www.youtube.com/watch?v=tuTC6pE2l9c
+
+How to Do a Proper Underhand Barbell Row with John Berardi — Precision Nutrition
+Source: https://www.youtube.com/watch?v=X_9L54FVD0c
+
+How to do the BENT-OVER BARBELL ROW! | 2 Minute Tutorial — Max Euceda
+Source: https://www.youtube.com/watch?v=FWJR5Ve8bnQ
+
+How To: Dumbbell Front Raise — ScottHermanFitness
+Source: https://www.youtube.com/watch?v=-t7fuZ0KhDA
+
+Band Pull Aparts Exercise Demonstration For Shoulder Stability — FITBODY with Julie Lohre
+Source: https://www.youtube.com/watch?v=LoBBo1dtY6I
+
+Cable Standing Hip Abduction — Program Videos
+Source: https://www.youtube.com/watch?v=DkxcKY5Tt7Q
+
+How To Work ALL Parts of Your Chest with the Cable Chest Fly! — Mind Pump TV
+Source: https://www.youtube.com/watch?v=HXVtFoExms0
+
+Cable Overhead Tricep Extension — Program Videos
+Source: https://www.youtube.com/watch?v=qIW3z-ydg-M
