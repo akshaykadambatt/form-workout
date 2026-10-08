@@ -1,0 +1,9 @@
+.app-update-banner,.app-update-settings{border:var(--border-width) solid var(--line);border-radius:var(--radius);padding:20px;background:var(--surface);margin-bottom:22px}
+.app-update-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;border-color:var(--lime)}
+.app-update-banner strong{font-size:18px;color:var(--text)}
+.app-update-banner p,.app-update-settings p{font-size:13px;line-height:1.5;color:var(--muted);margin:8px 0}
+.app-update-actions{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.app-update-actions button{min-height:46px}
+.app-update-settings{margin-top:24px}
+.app-update-settings .update-build{font-size:11px;margin-bottom:16px;font-variant-numeric:tabular-nums}
+@media(max-width:700px){.app-update-banner{align-items:stretch;flex-direction:column}.app-update-banner .app-update-actions button{flex:1}}

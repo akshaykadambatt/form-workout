@@ -71,6 +71,14 @@ npx firebase-tools emulators:exec --only firestore --project demo-form-workout -
 
 They verify owner access and deny unauthenticated users, other accounts, unverified email addresses, and cross-user writes.
 
+## In-app updates
+
+The app checks its service worker on launch, when returning to the foreground or reconnecting, and every five minutes while visible. An inline banner offers Refresh and Later; Settings also contains Check for updates and an installed build timestamp. Worker registration bypasses the HTTP cache. The hosting entry page and worker use revalidation headers.
+
+Updates wait for a user click. Refresh is blocked while Firebase is saving or unavailable, while an editor is open, and during a rest timer. Activation in another tab does not force this tab to reload. App updates never unregister the worker, clear browser storage, or modify workout records.
+
+Older installed versions that lack the update prompt need to download the worker while online, then close all Form windows and reopen so the waiting worker can activate. Reinstalling or clearing website data is not needed.
+
 ## Deployment
 
 ```sh
