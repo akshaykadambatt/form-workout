@@ -1,0 +1,101 @@
+# Movement demonstration credits
+
+Video demonstrations are by Goulart, provided through wger under CC BY-SA 4.0.
+License: https://creativecommons.org/licenses/by-sa/4.0/
+Changes: resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed.
+The adapted clips remain available under CC BY-SA 4.0. These media terms do not relicense the app code.
+
+Bench Press
+File: /motion/wger-73.mp4
+Source: https://wger.de/media/exercise-video/73/2bdb390c-312c-4497-a722-5eed2c823e5a.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Incline Bench Press - Dumbbell
+File: /motion/wger-537.mp4
+Source: https://wger.de/media/exercise-video/537/b9c937e9-daeb-42a9-be8e-7a77e368478c.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Shoulder Press, on Machine
+File: /motion/wger-543.mp4
+Source: https://wger.de/media/exercise-video/543/dbfd396b-1aab-4a64-a50b-2c31ff0a2cf7.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Lateral Raises
+File: /motion/wger-348.mp4
+Source: https://wger.de/media/exercise-video/348/de69928a-8a35-4096-821c-1f46de5e0e03.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Front Squats
+File: /motion/wger-257.mp4
+Source: https://wger.de/media/exercise-video/257/93145935-29db-4e52-9d2d-174b1c30c098.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Hip Thrust
+File: /motion/wger-294.mp4
+Source: https://wger.de/media/exercise-video/294/45bacf4b-1bb6-4d47-8bd1-9f00eddd4019.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Leg Curls (laying)
+File: /motion/wger-365.mp4
+Source: https://wger.de/media/exercise-video/365/becaf013-5044-40d0-bae9-7ed60c973737.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Standing Calf Raises
+File: /motion/wger-622.mp4
+Source: https://wger.de/media/exercise-video/622/461171e5-2b16-407d-bf27-27aeef43f105.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Pull-ups
+File: /motion/wger-475.mp4
+Source: https://wger.de/media/exercise-video/475/83067ffe-ccb9-4e22-8507-5131b211ce74.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Rowing seated, narrow grip
+File: /motion/wger-512.mp4
+Source: https://wger.de/media/exercise-video/512/fff4c294-93f0-4926-b3a2-bf59ad4afaa5.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Biceps Curls With Dumbbell
+File: /motion/wger-92.mp4
+Source: https://wger.de/media/exercise-video/92/8bfb917c-3d0d-49b9-8073-5d7e01c1b894.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Dumbbell Lunges Walking
+File: /motion/wger-206.mp4
+Source: https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Leg Curls (sitting)
+File: /motion/wger-366.mp4
+Source: https://wger.de/media/exercise-video/366/43df4b79-d4c3-4fbf-bcb5-e0d825b84120.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Incline Bench Press - Barbell
+File: /motion/wger-538.mp4
+Source: https://wger.de/media/exercise-video/538/4349a6f6-4cee-4c09-828b-c5e7fc2c1ff1.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Dips
+File: /motion/wger-194.mp4
+Source: https://wger.de/media/exercise-video/194/dd9a663f-d8ba-4621-823b-13788ccb66bc.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Sitting Calf Raises
+File: /motion/wger-590.mp4
+Source: https://wger.de/media/exercise-video/590/a325ae2e-686b-4a1f-aff2-ba37fa3fa157.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Hammer Curls
+File: /motion/wger-272.mp4
+Source: https://wger.de/media/exercise-video/272/df069052-2173-4f24-855f-a0eebe729f24.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Leg Press
+File: /motion/wger-371.mp4
+Source: https://wger.de/media/exercise-video/371/6aae16b4-01b9-4eb4-935c-3250f84d2c59.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Vector illustrations: original Form artwork. Simplified movement-path illustrations; program-specific tempo, grip, assistance, band and partial-rep instructions remain alongside the demonstration.
+Reference photos and descriptions: https://github.com/yuhonas/free-exercise-db (Unlicense, as provided by that project).
+The walking lunge (206) and barbell incline press (538) clips also have their first two seconds trimmed.
+The bench press (73) clip has its first second trimmed.

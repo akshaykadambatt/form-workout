@@ -1,0 +1,807 @@
+{
+  "barbell-bench-press": {
+    "type": "video",
+    "src": "/motion/wger-73.mp4",
+    "poster": "/motion/wger-73.jpg",
+    "label": "Bench Press",
+    "source": "https://wger.de/media/exercise-video/73/2bdb390c-312c-4497-a722-5eed2c823e5a.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "pause-dumbbell-incline-press": {
+    "type": "video",
+    "src": "/motion/wger-537.mp4",
+    "poster": "/motion/wger-537.jpg",
+    "label": "Incline Bench Press - Dumbbell",
+    "source": "https://wger.de/media/exercise-video/537/b9c937e9-daeb-42a9-be8e-7a77e368478c.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "constant-tension-machine-shoulder-press": {
+    "type": "video",
+    "src": "/motion/wger-543.mp4",
+    "poster": "/motion/wger-543.jpg",
+    "label": "Shoulder Press, on Machine",
+    "source": "https://wger.de/media/exercise-video/543/dbfd396b-1aab-4a64-a50b-2c31ff0a2cf7.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "machine-shoulder-press": {
+    "type": "video",
+    "src": "/motion/wger-543.mp4",
+    "poster": "/motion/wger-543.jpg",
+    "label": "Shoulder Press, on Machine",
+    "source": "https://wger.de/media/exercise-video/543/dbfd396b-1aab-4a64-a50b-2c31ff0a2cf7.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "dumbbell-lateral-raise": {
+    "type": "video",
+    "src": "/motion/wger-348.mp4",
+    "poster": "/motion/wger-348.jpg",
+    "label": "Lateral Raises",
+    "source": "https://wger.de/media/exercise-video/348/de69928a-8a35-4096-821c-1f46de5e0e03.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "front-squat": {
+    "type": "video",
+    "src": "/motion/wger-257.mp4",
+    "poster": "/motion/wger-257.jpg",
+    "label": "Front Squats",
+    "source": "https://wger.de/media/exercise-video/257/93145935-29db-4e52-9d2d-174b1c30c098.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "barbell-hip-thrust": {
+    "type": "video",
+    "src": "/motion/wger-294.mp4",
+    "poster": "/motion/wger-294.jpg",
+    "label": "Hip Thrust",
+    "source": "https://wger.de/media/exercise-video/294/45bacf4b-1bb6-4d47-8bd1-9f00eddd4019.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "constant-tension-lying-leg-curl": {
+    "type": "video",
+    "src": "/motion/wger-365.mp4",
+    "poster": "/motion/wger-365.jpg",
+    "label": "Leg Curls (laying)",
+    "source": "https://wger.de/media/exercise-video/365/becaf013-5044-40d0-bae9-7ed60c973737.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "a2-leg-curl": {
+    "type": "video",
+    "src": "/motion/wger-365.mp4",
+    "poster": "/motion/wger-365.jpg",
+    "label": "Leg Curls (laying)",
+    "source": "https://wger.de/media/exercise-video/365/becaf013-5044-40d0-bae9-7ed60c973737.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "eccentric-accentuated-constant-tension-standing-calf-raise": {
+    "type": "video",
+    "src": "/motion/wger-622.mp4",
+    "poster": "/motion/wger-622.jpg",
+    "label": "Standing Calf Raises",
+    "source": "https://wger.de/media/exercise-video/622/461171e5-2b16-407d-bf27-27aeef43f105.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "standing-calf-raise": {
+    "type": "video",
+    "src": "/motion/wger-622.mp4",
+    "poster": "/motion/wger-622.jpg",
+    "label": "Standing Calf Raises",
+    "source": "https://wger.de/media/exercise-video/622/461171e5-2b16-407d-bf27-27aeef43f105.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "wide-grip-pull-up": {
+    "type": "video",
+    "src": "/motion/wger-475.mp4",
+    "poster": "/motion/wger-475.jpg",
+    "label": "Pull-ups",
+    "source": "https://wger.de/media/exercise-video/475/83067ffe-ccb9-4e22-8507-5131b211ce74.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "cable-close-grip-row": {
+    "type": "video",
+    "src": "/motion/wger-512.mp4",
+    "poster": "/motion/wger-512.jpg",
+    "label": "Rowing seated, narrow grip",
+    "source": "https://wger.de/media/exercise-video/512/fff4c294-93f0-4926-b3a2-bf59ad4afaa5.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "eccentric-accentuated-cable-row": {
+    "type": "video",
+    "src": "/motion/wger-512.mp4",
+    "poster": "/motion/wger-512.jpg",
+    "label": "Rowing seated, narrow grip",
+    "source": "https://wger.de/media/exercise-video/512/fff4c294-93f0-4926-b3a2-bf59ad4afaa5.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "supinated-dumbbell-curl": {
+    "type": "video",
+    "src": "/motion/wger-92.mp4",
+    "poster": "/motion/wger-92.jpg",
+    "label": "Biceps Curls With Dumbbell",
+    "source": "https://wger.de/media/exercise-video/92/8bfb917c-3d0d-49b9-8073-5d7e01c1b894.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "dumbbell-walking-lunge": {
+    "type": "video",
+    "src": "/motion/wger-206.mp4",
+    "poster": "/motion/wger-206.jpg",
+    "label": "Dumbbell Lunges Walking",
+    "source": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed. First two seconds trimmed."
+  },
+  "a1-seated-leg-curl": {
+    "type": "video",
+    "src": "/motion/wger-366.mp4",
+    "poster": "/motion/wger-366.jpg",
+    "label": "Leg Curls (sitting)",
+    "source": "https://wger.de/media/exercise-video/366/43df4b79-d4c3-4fbf-bcb5-e0d825b84120.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "barbell-incline-press": {
+    "type": "video",
+    "src": "/motion/wger-538.mp4",
+    "poster": "/motion/wger-538.jpg",
+    "label": "Incline Bench Press - Barbell",
+    "source": "https://wger.de/media/exercise-video/538/4349a6f6-4cee-4c09-828b-c5e7fc2c1ff1.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed. First two seconds trimmed."
+  },
+  "dip": {
+    "type": "video",
+    "src": "/motion/wger-194.mp4",
+    "poster": "/motion/wger-194.jpg",
+    "label": "Dips",
+    "source": "https://wger.de/media/exercise-video/194/dd9a663f-d8ba-4621-823b-13788ccb66bc.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "constant-tension-seated-calf-raise": {
+    "type": "video",
+    "src": "/motion/wger-590.mp4",
+    "poster": "/motion/wger-590.jpg",
+    "label": "Sitting Calf Raises",
+    "source": "https://wger.de/media/exercise-video/590/a325ae2e-686b-4a1f-aff2-ba37fa3fa157.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "eccentric-accentuated-hammer-curl": {
+    "type": "video",
+    "src": "/motion/wger-272.mp4",
+    "poster": "/motion/wger-272.jpg",
+    "label": "Hammer Curls",
+    "source": "https://wger.de/media/exercise-video/272/df069052-2173-4f24-855f-a0eebe729f24.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "constant-tension-leg-press": {
+    "type": "video",
+    "src": "/motion/wger-371.mp4",
+    "poster": "/motion/wger-371.jpg",
+    "label": "Leg Press",
+    "source": "https://wger.de/media/exercise-video/371/6aae16b4-01b9-4eb4-935c-3250f84d2c59.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "a1-leg-press": {
+    "type": "video",
+    "src": "/motion/wger-371.mp4",
+    "poster": "/motion/wger-371.jpg",
+    "label": "Leg Press",
+    "source": "https://wger.de/media/exercise-video/371/6aae16b4-01b9-4eb4-935c-3250f84d2c59.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "leg-press": {
+    "type": "video",
+    "src": "/motion/wger-371.mp4",
+    "poster": "/motion/wger-371.jpg",
+    "label": "Leg Press",
+    "source": "https://wger.de/media/exercise-video/371/6aae16b4-01b9-4eb4-935c-3250f84d2c59.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "knee-banded-leg-press": {
+    "type": "video",
+    "src": "/motion/wger-371.mp4",
+    "poster": "/motion/wger-371.jpg",
+    "label": "Leg Press",
+    "source": "https://wger.de/media/exercise-video/371/6aae16b4-01b9-4eb4-935c-3250f84d2c59.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed."
+  },
+  "back-squat": {
+    "type": "diagram",
+    "rigs": [
+      "squat"
+    ],
+    "label": "Back Squat",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "eccentric-accentuated-stiff-leg-deadlift": {
+    "type": "diagram",
+    "rigs": [
+      "hinge"
+    ],
+    "label": "Eccentric-Accentuated Stiff Leg Deadlift",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "good-morning": {
+    "type": "diagram",
+    "rigs": [
+      "morning"
+    ],
+    "label": "Good Morning",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "cable-crunch": {
+    "type": "diagram",
+    "rigs": [
+      "cableCrunch"
+    ],
+    "label": "Cable Crunch",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "lat-pulldown": {
+    "type": "diagram",
+    "rigs": [
+      "pulldown"
+    ],
+    "label": "Lat Pulldown",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "supinated-lat-pulldown": {
+    "type": "diagram",
+    "rigs": [
+      "pulldown"
+    ],
+    "label": "Supinated Lat Pulldown",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "pendlay-row-barbell-bent-over-row": {
+    "type": "diagram",
+    "rigs": [
+      "pendlay",
+      "row"
+    ],
+    "label": "Pendlay Row/Barbell Bent Over Row",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration",
+    "parts": [
+      "Pendlay row",
+      "Bent-over row"
+    ]
+  },
+  "machine-lateral-raise": {
+    "type": "diagram",
+    "rigs": [
+      "machineLateral"
+    ],
+    "label": "Machine Lateral Raise",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "deadlift": {
+    "type": "diagram",
+    "rigs": [
+      "deadlift"
+    ],
+    "label": "Deadlift",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "unilateral-eccentric-overloaded-leg-extension": {
+    "type": "diagram",
+    "rigs": [
+      "assistedExtension"
+    ],
+    "label": "Unilateral Eccentric-Overloaded Leg Extension",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "single-leg-leg-extension": {
+    "type": "diagram",
+    "rigs": [
+      "singleExtension"
+    ],
+    "label": "Single-Leg Leg Extension",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "reverse-crunch": {
+    "type": "diagram",
+    "rigs": [
+      "reverseCrunch"
+    ],
+    "label": "Reverse Crunch",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "barbell-overhead-press": {
+    "type": "diagram",
+    "rigs": [
+      "overhead"
+    ],
+    "label": "Barbell Overhead Press",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "barbell-close-grip-bench-press": {
+    "type": "diagram",
+    "rigs": [
+      "closePress"
+    ],
+    "label": "Barbell Close Grip Bench Press",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "cable-flye-21s": {
+    "type": "diagram",
+    "rigs": [
+      "fly"
+    ],
+    "label": "Cable Flye 21s",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "machine-chest-supported-row-w-band": {
+    "type": "diagram",
+    "rigs": [
+      "supportedRow"
+    ],
+    "label": "Machine Chest-Supported Row W/Band",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "seated-t-bar-row": {
+    "type": "diagram",
+    "rigs": [
+      "supportedRow"
+    ],
+    "label": "Seated T-Bar Row",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "banded-chest-supported-t-bar-row": {
+    "type": "diagram",
+    "rigs": [
+      "supportedRow"
+    ],
+    "label": "Banded Chest-Supported T-Bar Row",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "a2-cable-pull-through": {
+    "type": "diagram",
+    "rigs": [
+      "pullThrough"
+    ],
+    "label": "A2: Cable Pull-Through",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "machine-hip-abduction": {
+    "type": "diagram",
+    "rigs": [
+      "hipAbduction"
+    ],
+    "label": "Machine Hip Abduction",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "weighted-crunch": {
+    "type": "diagram",
+    "rigs": [
+      "crunch"
+    ],
+    "label": "Weighted Crunch",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "neutral-grip-pull-up-negative-neutral-grip-pull-up": {
+    "type": "diagram",
+    "rigs": [
+      "neutralPullup"
+    ],
+    "label": "Neutral-Grip Pull-Up/Negative Neutral-Grip Pull-Up",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "myo-reps-floor-skull-crusher": {
+    "type": "diagram",
+    "rigs": [
+      "skullFloor"
+    ],
+    "label": "Myo Reps Floor Skull Crusher",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "deficit-deadlift": {
+    "type": "diagram",
+    "rigs": [
+      "deficit"
+    ],
+    "label": "Deficit Deadlift",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "a2-leg-extension": {
+    "type": "diagram",
+    "rigs": [
+      "extension"
+    ],
+    "label": "A2: Leg Extension",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "a1-leg-extension": {
+    "type": "diagram",
+    "rigs": [
+      "extension"
+    ],
+    "label": "A1: Leg Extension",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "hanging-leg-raise": {
+    "type": "diagram",
+    "rigs": [
+      "hangingRaise"
+    ],
+    "label": "Hanging Leg Raise",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "machine-chest-press": {
+    "type": "diagram",
+    "rigs": [
+      "chestPress"
+    ],
+    "label": "Machine Chest Press",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "bulgarian-split-squat": {
+    "type": "diagram",
+    "rigs": [
+      "splitSquat"
+    ],
+    "label": "Bulgarian Split Squat",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "pec-deck": {
+    "type": "diagram",
+    "rigs": [
+      "pecDeck"
+    ],
+    "label": "Pec Deck",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "dumbbell-row": {
+    "type": "diagram",
+    "rigs": [
+      "dumbbellRow"
+    ],
+    "label": "Dumbbell Row",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "ez-bar-curl-21s": {
+    "type": "diagram",
+    "rigs": [
+      "curl"
+    ],
+    "label": "EZ Bar Curl 21s",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "barbell-supinated-row": {
+    "type": "diagram",
+    "rigs": [
+      "row"
+    ],
+    "label": "Barbell Supinated Row",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "barbell-bent-over-row": {
+    "type": "diagram",
+    "rigs": [
+      "row"
+    ],
+    "label": "Barbell Bent Over Row",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "barbell-push-press": {
+    "type": "diagram",
+    "rigs": [
+      "pushPress"
+    ],
+    "label": "Barbell Push Press",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "cable-triceps-kickback": {
+    "type": "diagram",
+    "rigs": [
+      "cableKickback"
+    ],
+    "label": "Cable Triceps Kickback",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "barbell-45-hyperextension": {
+    "type": "diagram",
+    "rigs": [
+      "backExtension"
+    ],
+    "label": "Barbell 45\u00c2\u00b0 Hyperextension",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "barbell-floor-press": {
+    "type": "diagram",
+    "rigs": [
+      "floorPress"
+    ],
+    "label": "Barbell Floor Press",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "machine-high-row": {
+    "type": "diagram",
+    "rigs": [
+      "highRow"
+    ],
+    "label": "Machine High Row",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "arnold-press": {
+    "type": "diagram",
+    "rigs": [
+      "arnold"
+    ],
+    "label": "Arnold Press",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "cable-upright-row": {
+    "type": "diagram",
+    "rigs": [
+      "uprightSupine"
+    ],
+    "label": "Cable Upright Row",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "sliding-leg-curl": {
+    "type": "diagram",
+    "rigs": [
+      "slidingCurl"
+    ],
+    "label": "Sliding Leg Curl",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "push-up": {
+    "type": "diagram",
+    "rigs": [
+      "pushup"
+    ],
+    "label": "Push-Up",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "band-pull-apart": {
+    "type": "diagram",
+    "rigs": [
+      "bandApart"
+    ],
+    "label": "Band Pull-Apart",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "dumbbell-step-up": {
+    "type": "diagram",
+    "rigs": [
+      "stepUp"
+    ],
+    "label": "Dumbbell Step-Up",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "reverse-hyper": {
+    "type": "diagram",
+    "rigs": [
+      "reverseHyper"
+    ],
+    "label": "Reverse Hyper",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "cable-standing-hip-abduction": {
+    "type": "diagram",
+    "rigs": [
+      "cableAbduction"
+    ],
+    "label": "Cable Standing Hip Abduction",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "plank": {
+    "type": "diagram",
+    "rigs": [
+      "plank"
+    ],
+    "label": "Plank",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "single-arm-pulldown": {
+    "type": "diagram",
+    "rigs": [
+      "singlePulldown"
+    ],
+    "label": "Single-Arm Pulldown",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "california-press": {
+    "type": "diagram",
+    "rigs": [
+      "california"
+    ],
+    "label": "California Press",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "eccentric-overloaded-rope-overhead-triceps-extension": {
+    "type": "diagram",
+    "rigs": [
+      "overheadTriceps"
+    ],
+    "label": "Eccentric-Overloaded Rope Overhead Triceps Extension",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration"
+  },
+  "dumbbell-front-raise-lateral-raise": {
+    "type": "diagram",
+    "rigs": [
+      "frontRaise",
+      "lateral"
+    ],
+    "label": "Front raise / lateral raise",
+    "source": "https://github.com/yuhonas/free-exercise-db",
+    "author": "Form",
+    "license": "Original vector illustration",
+    "parts": [
+      "Front raise",
+      "Lateral raise"
+    ]
+  }
+}
