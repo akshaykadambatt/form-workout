@@ -81,8 +81,10 @@ html,body{background:var(--base);color:var(--text)}
 .month-heading h3{font-size:20px;letter-spacing:-.3px}.month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px}
 .weekday-label{text-align:center;color:var(--muted);font-size:11px;font-weight:700;padding:2px 0 8px}
 .month-day{min-height:48px;aspect-ratio:1.25;border-radius:var(--radius-small);background:var(--raised);border:var(--border-width) solid transparent;color:var(--text);position:relative;font-size:17px;display:grid;place-items:center}
-.month-day.outside{opacity:.4}.month-day.upper{background:var(--pink);color:var(--color-ink)}.month-day.lower{background:var(--purple);color:var(--color-ink)}
-.month-day.partial{background:var(--surface);border:2px solid var(--purple);color:var(--text)}.month-day.partial.upper{border-color:var(--pink)}
+.month-day.outside:not(.has-workout){opacity:.4}.month-day.upper{--workout-color:var(--pink)}.month-day.lower{--workout-color:var(--purple)}
+.month-day.has-workout::before{content:'';position:absolute;inset:0;border-radius:inherit;background:var(--workout-color);opacity:var(--completion);pointer-events:none}
+.month-day>span{z-index:1}.month-day>span:first-child{position:relative}.month-day.strong-fill{color:var(--color-ink)}
+.month-day.partial{border:2px solid var(--workout-color)}
 .month-day.is-today>span:first-child{text-decoration:underline;text-underline-offset:5px;font-weight:700}.month-day.date-selected{outline:3px solid var(--lime);outline-offset:2px}
 .day-mark{position:absolute;right:5px;bottom:3px;display:grid;place-items:center;font-size:14px;line-height:1}
 .month-calendar .calendar-legend{margin-top:18px;color:var(--muted)}

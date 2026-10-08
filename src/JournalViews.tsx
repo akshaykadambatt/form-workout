@@ -1,4 +1,4 @@
-import {useRef} from 'react';
+import {useRef,type CSSProperties} from 'react';
 import {ArrowLeft,ArrowRight,Check,Dumbbell,Eye,Pencil,Trash2,RotateCcw,Play,Pause,Plus} from 'lucide-react';
 import {calendarDays,dateKey,dayOffset,progress,sessionLabel,sessionOnDate,sessionState,type Session,type Template} from './model';
 import {themes,resolveTheme} from './themes';
@@ -25,9 +25,10 @@ export function DayCard({date,today,session,template,state,active,ready,onDay,on
 export function TrainingCalendar({month,sessions,selectedDate,onMonth,onSelect}:{month:string;sessions:Session[];selectedDate:string|null;onMonth:(n:number)=>void;onSelect:(date:string)=>void}){
  const today=dateKey();
  return <section className="history-panel month-calendar" aria-label="Training calendar"><div className="section-heading"><div><h2>Your training calendar</h2><p className="muted">One day. One workout.</p></div></div><div className="month-heading"><button className="icon-button" aria-label="Previous month" onClick={()=>onMonth(-1)}><ArrowLeft size={20}/></button><h3>{new Date(month+'-01T12:00:00').toLocaleDateString('en-US',{month:'long',year:'numeric'})}</h3><button className="icon-button" aria-label="Next month" onClick={()=>onMonth(1)}><ArrowRight size={20}/></button></div><div className="month-grid">{['M','T','W','T','F','S','S'].map((day,i)=><span className="weekday-label" key={i}>{day}</span>)}{calendarDays(month).map(date=>{
-  const s=sessionOnDate(sessions,date),outside=date.slice(0,7)!==month;
-  return <button key={date} className={`month-day ${outside?'outside':''} ${s?s.kind:''} ${s&&!s.finishedAt?'partial':''} ${date===today?'is-today':''} ${date===selectedDate?'date-selected':''}`} aria-label={`${displayDate(date)}${s?`, ${sessionLabel(s)}, ${s.finishedAt?'completed':'unfinished'}`:', no workout'}`} aria-pressed={date===selectedDate} aria-current={date===today?'date':undefined} onClick={()=>onSelect(date)}><span>{Number(date.slice(-2))}</span>{s&&<span className="day-mark" aria-hidden="true">{s.finishedAt?<Check size={13}/>:<span>•</span>}</span>}</button>;
- })}</div><div className="calendar-legend"><span><i className="legend-pink"/>Upper</span><span><i className="legend-purple"/>Lower</span><span>Outline = unfinished</span></div></section>;
+  const s=sessionOnDate(sessions,date),outside=date.slice(0,7)!==month,counts=progress(s),completion=counts.total?counts.done/counts.total:0;
+  const label=`${displayDate(date)}${s?`, ${sessionLabel(s)}, ${counts.done} of ${counts.total} sets complete (${Math.round(completion*100)}%), ${s.finishedAt?'finished':'unfinished'}`:', no workout'}`;
+  return <button key={date} className={`month-day ${outside?'outside':''} ${s?`${s.kind} has-workout`:''} ${completion>=.5?'strong-fill':''} ${s&&!s.finishedAt?'partial':''} ${date===today?'is-today':''} ${date===selectedDate?'date-selected':''}`} style={s?{'--completion':completion} as CSSProperties:undefined} title={label} aria-label={label} aria-pressed={date===selectedDate} aria-current={date===today?'date':undefined} onClick={()=>onSelect(date)}><span>{Number(date.slice(-2))}</span>{s&&<span className="day-mark" aria-hidden="true">{completion===1?<Check size={13}/>:<span>•</span>}</span>}</button>;
+ })}</div><div className="calendar-legend"><span><i className="legend-pink"/>Upper</span><span><i className="legend-purple"/>Lower</span><span>Fainter = fewer sets · Full color = all sets</span><span>Outline = unfinished session</span></div></section>;
 }
 
 export function SessionHistory({sessions,allSessions,onView,onEdit,onDelete,onRestore,trash,ready}:{sessions:Session[];allSessions:Session[];onView:(s:Session)=>void;onEdit:(s:Session)=>void;onDelete:(s:Session)=>void;onRestore:(s:Session)=>void;trash:boolean;ready:boolean}){
