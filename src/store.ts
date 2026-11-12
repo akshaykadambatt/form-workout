@@ -5,6 +5,7 @@ import {initializeFirestore,getFirestore,persistentLocalCache,persistentMultiple
 import config from './firebase-config.json';
 import {defaults,type Settings,type Session,type SetLog,nextPosition,completeSession,activeSession,sessionOnDate,validDate,dateKey} from './model';
 import {readLocal,writeLocal,preserveBackup,deviceImportPlan} from './device-journal';
+import {useNutritionStore} from './nutrition-store';
 const existing=getApps()[0];
 const app=existing||initializeApp(config);
 export const auth=getAuth(app);
@@ -172,5 +173,6 @@ export function useWorkoutStore(){
   }catch(e:any){setError(`You are still signed in. ${e.message}`);}
   finally{clearTimeout(timeout);setLoggingOut(false);}
  }
- return{user,ready,settings,sessions,status,error,setError,saveSettings,saveTheme,addSession,editSet,updateLivePreferences,finish,login,logout,updateSessionDetails,deleteSession,restoreSession,pauseSession,resumeSession,hasDeviceWorkouts:needsImport,importDevice,deviceConflicts:!!user?plan.conflicts.length:0};
+ const nutrition=useNutritionStore({app,db,scope,canWrite,track,setError});
+ return{nutrition,user,ready,settings,sessions,status,error,setError,saveSettings,saveTheme,addSession,editSet,updateLivePreferences,finish,login,logout,updateSessionDetails,deleteSession,restoreSession,pauseSession,resumeSession,hasDeviceWorkouts:needsImport,importDevice,deviceConflicts:!!user?plan.conflicts.length:0};
 }

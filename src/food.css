@@ -1,0 +1,106 @@
+/* Food log: reuses the workout day card, exercise cards and theme tokens. */
+.app .session-hero.food{background:var(--lime);color:var(--accent-ink)}
+.app .session-hero.food .hero-pill{background:color-mix(in srgb,var(--accent-ink) 14%,transparent);color:inherit}
+.food-hero h2 small{font-size:.42em;font-weight:500;letter-spacing:0;opacity:.75}
+.food-hero .macro-meters{grid-column:1/-1;margin-top:18px}
+.macro-meters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;width:100%}
+.macro-meter{display:grid;gap:3px;min-width:0}
+.macro-meter>span{font-size:11px;letter-spacing:.6px;text-transform:uppercase;opacity:.75}
+.macro-meter strong{font-size:17px;font-weight:700;white-space:nowrap}
+.macro-meter strong small{font-size:11px;font-weight:400;opacity:.75}
+.macro-meter em{font-style:normal;font-size:12px;color:var(--lime);font-weight:500}
+.meter-track{height:6px;border-radius:99px;background:color-mix(in srgb,currentColor 18%,transparent);overflow:hidden}
+.meter-track i{display:block;height:100%;border-radius:inherit;background:currentColor}
+
+.fuel-card{background:var(--surface);color:var(--text);border:var(--border-width) solid var(--line);border-radius:var(--radius);padding:20px;margin:14px 0 6px;display:grid;gap:16px}
+.fuel-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.fuel-head h3{margin:4px 0 0;font-size:26px;letter-spacing:-.5px}
+.fuel-head h3 small{font-size:14px;font-weight:400;color:var(--muted);letter-spacing:0}
+.fuel-card .macro-meters{grid-template-columns:repeat(5,minmax(0,1fr))}
+.fuel-card .meter-track i{background:var(--lime)}
+.next-meal{background:var(--raised);border-radius:var(--radius-small);padding:14px 16px;display:grid;gap:4px;margin:0}
+.workout-column>.next-meal{margin:14px 0 4px;background:var(--surface);border:var(--border-width) solid var(--line)}
+.next-meal strong{font-size:18px}
+.next-meal p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+.next-meal .tiny{color:var(--lime)}
+
+.food-composer{background:var(--surface);border:var(--border-width) solid var(--line);border-radius:var(--radius);padding:20px;margin:14px 0 22px;display:grid;gap:12px}
+.food-composer>label{font-weight:700;font-size:17px}
+.food-composer textarea{width:100%;resize:vertical;min-height:84px;padding:13px 14px;border-radius:var(--radius-small);border:var(--border-width) solid var(--line);background:var(--raised);color:var(--text);font-size:16px;line-height:1.4}
+.food-composer textarea:focus-visible{outline:2px solid var(--lime);outline-offset:1px}
+.meal-chips{display:flex;flex-wrap:wrap;gap:8px}
+.meal-chips button{padding:8px 13px;min-height:38px;border-radius:var(--radius-pill);border:var(--border-width) solid var(--line);background:transparent;color:var(--muted);font-size:13px}
+.meal-chips button.selected{background:var(--lime);color:var(--accent-ink);border-color:var(--lime);font-weight:700}
+.food-composer .guide-reference{margin:0}
+
+.food-entry .exercise-summary{grid-template-columns:auto minmax(0,1fr) auto auto}
+.food-time{font-size:12px;color:var(--muted);min-width:58px;text-align:left;white-space:nowrap}
+.food-entry .exercise-name small{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;white-space:normal}
+.food-entry.expanded .exercise-name small{-webkit-line-clamp:unset}
+.food-kcal{display:grid;justify-items:end;font-size:19px;font-weight:700;line-height:1.05}
+.food-kcal small{font-size:10px;font-weight:400;color:var(--muted);letter-spacing:.6px}
+.food-entry .exercise-body{display:grid;gap:14px}
+.food-items{border:0;padding:0;margin:0;display:grid;gap:8px;min-width:0}
+.food-item-labels,.food-item{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(5,minmax(0,1fr)) 32px;gap:6px;align-items:center}
+.food-item-labels{font-size:10px;letter-spacing:.6px;color:var(--muted)}
+.food-item-labels span:not(:first-child){text-align:center}
+.food-item-name{display:grid;min-width:0}
+.food-item-name strong{font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-transform:capitalize}
+.food-item-name small{font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.food-item input{width:100%;min-width:0;height:40px;text-align:center;border-radius:var(--radius-small);border:var(--border-width) solid var(--line);background:var(--raised);color:var(--text);font-size:14px;padding:0 2px;-moz-appearance:textfield}
+.food-item input::-webkit-outer-spin-button,.food-item input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.food-item.unmatched input{border-color:var(--pink)}
+.food-item.unmatched small{color:var(--pink)}
+.food-item .icon-button{width:32px;height:32px}
+.food-item .icon-button:disabled{opacity:.3}
+.food-meal-select{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.food-meal-select select{height:38px;border-radius:var(--radius-small);border:var(--border-width) solid var(--line);background:var(--raised);color:var(--text);padding:0 10px}
+.food-actions{display:flex;gap:14px;flex-wrap:wrap}
+.food-deleted{margin-top:14px;display:grid;gap:8px;justify-items:start}
+.food-deleted-row{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--radius-small);background:var(--surface);border:var(--border-width) dashed var(--line)}
+.food-deleted-row span{display:grid;min-width:0}
+.food-deleted-row small{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.goal-mode{margin:0;font-weight:700;color:var(--lime)}
+.goal-mode.hold,.goal-mode.trim{color:var(--pink)}
+.goal-list{margin:12px 0;display:grid;gap:7px}
+.goal-list div{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.goal-list dt{color:var(--muted)}
+.goal-list dd{margin:0;font-weight:700}
+.goal-note{color:var(--muted);font-size:13px;line-height:1.45;margin:0 0 10px}
+.kcal-bars{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:14px}
+.kcal-bars button{display:grid;gap:5px;justify-items:center;background:none;border:0;color:var(--muted);padding:0;min-height:44px}
+.kcal-bar{display:flex;align-items:flex-end;width:100%;height:64px;border-radius:6px;background:var(--raised);overflow:hidden}
+.kcal-bar i{display:block;width:100%;background:var(--muted);border-radius:6px 6px 0 0}
+.kcal-bars .on-goal .kcal-bar i{background:var(--lime)}
+.kcal-bars .current small{color:var(--text);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+.body-settings{display:grid;gap:18px;margin-bottom:26px;padding:24px}
+.body-settings .session-details{margin:0}
+.body-settings .session-details h3{margin:0 0 12px}
+.reading-list{display:grid;gap:2px}
+.reading-row{display:grid;grid-template-columns:minmax(0,1.4fr) 1fr 1fr 40px;gap:8px;align-items:center;padding:8px 2px;border-bottom:1px solid var(--line);font-size:14px}
+.reading-head{font-size:10px;letter-spacing:.6px;color:var(--muted)}
+.goal-summary{display:grid;gap:8px}
+.goal-notes{margin:0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.5}
+
+.month-day .day-kcal{position:absolute;left:0;right:0;bottom:2px;font-size:9px;line-height:1;text-align:center;opacity:.8;font-weight:500}
+.month-day.has-food>span:first-child{transform:translateY(-4px)}
+
+@media(max-width:700px){
+ .macro-meters{gap:8px}
+ .macro-meter strong{font-size:15px}
+ .macro-meter strong small{display:block;font-size:10px}
+ .fuel-card{padding:16px}
+ .fuel-card .macro-meters{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:14px}
+ .fuel-head h3{font-size:22px}
+ .food-composer{padding:16px}
+ .food-item-labels,.food-item{grid-template-columns:minmax(0,1.2fr) repeat(5,minmax(0,1fr)) 28px;gap:4px}
+ .food-item input{font-size:13px;height:38px}
+ .food-item .icon-button{width:28px;height:28px}
+ .food-time{min-width:50px;font-size:11px}
+ .body-settings{padding:18px 14px}
+ .month-day .day-kcal{font-size:8px;bottom:1px}
+ .app .mobile-nav button{font-size:10px}
+ .app .mobile-nav button>span{width:48px}
+}

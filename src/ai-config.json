@@ -1,0 +1,6 @@
+{
+  "enabled": true,
+  "model": "gemini-3.8-flash",
+  "appCheckProvider": "v3",
+  "appCheckSiteKey": ""
+}

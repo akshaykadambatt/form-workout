@@ -23,7 +23,31 @@ A mobile-first workout journal for upper/lower training. Log your sets, adjust w
 - Google sign-in required for logging, private Firebase sync, and offline persistence for signed-in accounts.
 - Automatic upload of older device-only workouts, with existing cloud records protected from overwrite.
 - Logout waits for pending saves; separate device recovery backups remain available for export.
+- Free-text food log with AI calorie and macro estimates, daily goals that follow your weight and waist, and a next-meal target.
 - Home-screen installation with cached fonts and exercise references.
+
+## Food log
+
+The **Food** page takes free text ("3 eggs, 1 tbsp olive oil, 2 idli, 1 cup sambar") and logs calories, protein, carbs, fat and fibre. Days swipe back and forth like workout days; you can log as many entries a day as you eat, each tagged Breakfast, Lunch, Smoothie, Snack, Dinner or Before bed. Every number is editable and deleted entries can be restored. Daily calories appear on the training calendar and in session history.
+
+Estimates come from Gemini through [Firebase AI Logic](https://firebase.google.com/docs/ai-logic) when it is enabled, and otherwise from a built-in table of about 100 common foods (`src/foods.json`, including South Indian staples). The table is also the offline fallback. Unrecognised foods are logged with empty numbers for you to fill in rather than guessed. Food text is sent to Google only when AI is enabled.
+
+To enable AI estimates: in the Firebase console open **AI Logic**, choose **Get started** and pick the **Gemini Developer API** (no billing needed). If the setup enforces App Check, register the web app with reCAPTCHA and put the public site key in `src/ai-config.json` (`appCheckSiteKey`, and `appCheckProvider` set to `v3` or `enterprise`). The model name is set in the same file. Set `enabled` to `false` to use only the built-in table.
+
+### Goals
+
+Height, age, sex and activity are set once under **Settings → Body and food goals**; weight and waist (at the navel) are logged there as they change. Goals, what is left to eat today and a target for the next meal are shown on **Today** and **Food**.
+
+- Energy: Mifflin-St Jeor resting energy × activity (1.375 / 1.55 / 1.725), plus a 10% surplus for lean gain.
+- Protein 1.8 g/kg, fat 25% of calories, fibre 14 g per 1,000 kcal, carbs the remainder. All of these move with logged weight.
+- Weight stalled (under 0.3 kg gained over 3+ weeks) with a steady waist: surplus rises to 15%.
+- Waist up 1 cm or more over 2-10 weeks and growing faster than body weight: surplus drops to 5%, protein rises to 2.0 g/kg and fat to 30%, which lowers carbs.
+- Waist up 2 cm or more, or waist at or above half of height: calories hold at maintenance with protein at 2.2 g/kg.
+- The next-meal target splits what is left across the eating slots still ahead in the day and never asks one sitting for more than 40% of a day's goals.
+
+These are planning estimates, not medical advice. Past days use the weight and waist readings in force on that day.
+
+Food days are stored at `users/{uid}/food/{date}` and body readings at `users/{uid}/nutrition/settings`, covered by the existing owner-only rule. A device recovery copy is kept and included in **Export device backups**; **Export data** includes the food log and readings. Nothing in the food log touches workout sessions.
 
 ## Getting started
 
