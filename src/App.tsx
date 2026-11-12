@@ -16,8 +16,10 @@ const assets=refs as Record<string,Asset>;
 const friendly=(s:string)=>s.replace('Eccentric-Accentuated/Constant-Tension ','').replace('Eccentric-Accentuated ','').replace('Constant-Tension ','').replace('Unilateral Eccentric-Overloaded ','').replace('Eccentric-Overloaded ','');
 function Modal({title,children,onClose}:{title:string;children:React.ReactNode;onClose:()=>void}){const dialog=useRef<HTMLDialogElement>(null);useEffect(()=>{dialog.current?.showModal();},[]);return <dialog ref={dialog} onCancel={onClose} onClick={e=>{if(e.target===dialog.current)onClose();}}><div className="dialog-head"><h2>{title}</h2><button className="icon-button" aria-label="Close" onClick={onClose}><X/></button></div>{children}</dialog>;}
 function Brand(){return <span className="brand"><span className="brand-symbol">f</span>form<span className="brand-dot">.</span></span>;}
-export default function App(){
- const store=useWorkoutStore();const{sessions,user,ready}=store;const settings=sequenceSettings(store.settings,sessions);
+export default function App(){return <AppView store={useWorkoutStore()}/>;}
+// Takes the store as a prop so the interface can run against another store.
+export function AppView({store}:{store:ReturnType<typeof useWorkoutStore>}){
+ const{sessions,user,ready}=store;const settings=sequenceSettings(store.settings,sessions);
  const [progressionReview,setProgressionReview]=useState<{sessionId:string;suggestions:ProgressionSuggestion[]}|null>(null);
  const[tab,setTab]=useState('today'),[expanded,setExpanded]=useState(0),[guide,setGuide]=useState<Exercise|null>(null),[editing,setEditing]=useState<Exercise|null>(null),[review,setReview]=useState<string|null>(null),[isEditing,setIsEditing]=useState(false),[finishing,setFinishing]=useState(false),[setup,setSetup]=useState(false),[toast,setToast]=useState(''),[timerEnd,setTimerEnd]=useState<number|null>(null),[seconds,setSeconds]=useState(0),[week,setWeek]=useState(1),[selectedDate,setSelectedDate]=useState<string|null>(null),[browseDate,setBrowseDate]=useState(dateKey()),[month,setMonth]=useState(dateKey().slice(0,7)),[showTrash,setShowTrash]=useState(false),[deleting,setDeleting]=useState<Session|null>(null);
  const[pickingWorkout,setPickingWorkout]=useState(false);

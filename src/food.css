@@ -15,7 +15,7 @@
 .fuel-card{background:var(--surface);color:var(--text);border:var(--border-width) solid var(--line);border-radius:var(--radius);padding:20px;margin:14px 0 6px;display:grid;gap:16px}
 .fuel-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .fuel-head h3{margin:4px 0 0;font-size:26px;letter-spacing:-.5px}
-.fuel-head h3 small{font-size:14px;font-weight:400;color:var(--muted);letter-spacing:0}
+.fuel-head h3 small{white-space:nowrap;font-size:14px;font-weight:400;color:var(--muted);letter-spacing:0}
 .fuel-card .macro-meters{grid-template-columns:repeat(5,minmax(0,1fr))}
 .fuel-card .meter-track i{background:var(--lime)}
 .next-meal{background:var(--raised);border-radius:var(--radius-small);padding:14px 16px;display:grid;gap:4px;margin:0}
