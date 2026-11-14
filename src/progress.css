@@ -3,6 +3,18 @@
 .progress-head{display:flex;justify-content:space-between;align-items:center;color:var(--lime)}
 .progress-select select{width:100%;height:44px;border-radius:var(--radius-small);border:var(--border-width) solid var(--line);background:var(--raised);color:var(--text);padding:0 12px;font-size:15px;font-weight:500}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.overall-progress{display:grid;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.overall-verdict{margin:0;display:grid;gap:2px}
+.overall-verdict strong{font-size:30px;letter-spacing:-.5px;line-height:1.05;color:var(--lime)}
+.overall-verdict.flat strong{color:var(--text)}
+.overall-verdict.down strong{color:var(--pink)}
+.overall-verdict span{font-size:14px;color:var(--muted)}
+.overall-progress .text-button{justify-self:start;min-height:36px}
+.lift-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.lift-list li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.lift-list li.up strong{color:var(--lime)}
+.lift-list li.down strong{color:var(--pink)}
+.progress-detail{color:var(--muted)}
 .trend-tabs{display:flex;flex-wrap:wrap;gap:6px}
 .trend-tabs button{padding:6px 12px;min-height:34px;border-radius:var(--radius-pill);border:var(--border-width) solid var(--line);background:transparent;color:var(--muted);font-size:12px}
 .trend-tabs button.selected{background:var(--lime);color:var(--accent-ink);border-color:var(--lime);font-weight:700}
