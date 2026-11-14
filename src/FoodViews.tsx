@@ -53,7 +53,6 @@ export function FoodPage({date,today,nutrition,ready,busy,setBusy,onDay,onToday,
  const changeItem=(e:FoodEntry,index:number,patch:Partial<FoodItem>)=>nutrition.updateFood(date,{...e,source:'edited',items:e.items.map((item,i)=>i===index?{...item,...patch,matched:true}:item)});
  return <><div className="page-heading"><div><p className="eyebrow">{displayDate(date)}</p><h1>Fuel the work.</h1></div><span className="outline-tag">{goal?fmt(goal.kcal):'SET'} <span>{goal?'KCAL GOAL':'YOUR GOAL'}</span></span></div>
  <div className="dashboard-grid"><section className="workout-column">
-  <BodyTrendCard nutrition={nutrition} today={today}/>
   <section className="day-card-shell" aria-label="Food day">
    <div className="day-navigation"><button className="icon-button" aria-label="Previous day" onClick={()=>onDay(-1)}><ArrowLeft size={20}/></button><button className="day-label" onClick={onToday}><strong>{dayName}</strong><span>{new Date(date+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric'})}</span></button><button className="icon-button" aria-label="Next day" onClick={()=>onDay(1)}><ArrowRight size={20}/></button></div>
    <div className={`session-hero day-hero food-hero ${entries.length?'food':'unstarted'}`} onTouchStart={e=>{const t=e.touches[0];touch.current={x:t.clientX,y:t.clientY};}} onTouchEnd={e=>{if(!touch.current)return;const dx=e.changedTouches[0].clientX-touch.current.x,dy=e.changedTouches[0].clientY-touch.current.y;touch.current=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)onDay(dx<0?1:-1);}}>
@@ -85,6 +84,7 @@ export function FoodPage({date,today,nutrition,ready,busy,setBusy,onDay,onToday,
    </div>}
   </article>;})}</div>
   {deleted.length>0&&<div className="food-deleted"><button className="text-button" onClick={()=>setShowDeleted(v=>!v)}>{showDeleted?'Hide deleted entries':`Deleted entries (${deleted.length})`}</button>{showDeleted&&deleted.map(e=><div className="food-deleted-row" key={e.id}><span><strong>{e.meal} · {fmt(entryTotals(e).kcal)} kcal</strong><small>{e.text}</small></span><button className="text-button" disabled={!ready} onClick={()=>{if(nutrition.restoreFood(date,e.id))notify('Entry restored.');}}><RotateCcw size={15}/> Restore</button></div>)}</div>}
+  <BodyTrendCard nutrition={nutrition} today={today}/>
  </section>
  <aside className="right-column">
   <GoalCard goal={goal} onSettings={onSettings}/>
