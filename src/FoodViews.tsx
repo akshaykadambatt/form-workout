@@ -1,13 +1,14 @@
 import {useEffect,useRef,useState} from 'react';
-import {ArrowLeft,ArrowRight,ArrowUpRight,Check,ChevronDown,CloudUpload,RefreshCw,RotateCcw,Ruler,Sparkles,Trash2,Utensils,X} from 'lucide-react';
+import {ArrowLeft,ArrowRight,ArrowUpRight,Check,ChevronDown,CloudUpload,Moon,RefreshCw,RotateCcw,Ruler,Sparkles,Trash2,Utensils,X} from 'lucide-react';
 import {dateKey,dayOffset,validDate} from './model';
-import {bodyDefaults,dayEntries,dayTotals,entryTotals,goals,macroKeys,mealForTime,meals,newEntry,nextMeal,remaining,type Activity,type Body,type FoodDay,type FoodEntry,type FoodItem,type Goals,type Macros} from './nutrition';
+import {bodyDefaults,dayEntries,dayTotals,entryTotals,goals,macroKeys,mealForTime,meals,newEntry,nextMeal,remaining,sleepAverage,sleepHours,sleepText,type Activity,type Body,type FoodDay,type FoodEntry,type FoodItem,type Goals,type Macros} from './nutrition';
 import type {NutritionStore} from './nutrition-store';
 import {displayDate} from './JournalViews';
+import {BodyTrendCard} from './ProgressViews';
 import './food.css';
 
 // Used when the store has no nutrition API (signed out, or a test double).
-export const offNutrition:NutritionStore={days:{},body:bodyDefaults,addFood:()=>false,updateFood:()=>false,removeFood:()=>false,restoreFood:()=>false,saveBody:()=>false,saveMeasurement:()=>false,estimate:async()=>({items:[],source:'table'})};
+export const offNutrition:NutritionStore={days:{},body:bodyDefaults,addFood:()=>false,updateFood:()=>false,removeFood:()=>false,restoreFood:()=>false,saveBody:()=>false,saveMeasurement:()=>false,saveSleep:()=>false,estimate:async()=>({items:[],source:'table'})};
 const macroLabels:Record<keyof Macros,string>={kcal:'Calories',protein:'Protein',carbs:'Carbs',fat:'Fat',fiber:'Fibre'};
 const short:Record<keyof Macros,string>={kcal:'KCAL',protein:'P',carbs:'C',fat:'F',fiber:'FIB'};
 const sourceLabel={ai:'AI estimate',table:'Built-in estimate',edited:'Edited by you'};
@@ -52,6 +53,7 @@ export function FoodPage({date,today,nutrition,ready,busy,setBusy,onDay,onToday,
  const changeItem=(e:FoodEntry,index:number,patch:Partial<FoodItem>)=>nutrition.updateFood(date,{...e,source:'edited',items:e.items.map((item,i)=>i===index?{...item,...patch,matched:true}:item)});
  return <><div className="page-heading"><div><p className="eyebrow">{displayDate(date)}</p><h1>Fuel the work.</h1></div><span className="outline-tag">{goal?fmt(goal.kcal):'SET'} <span>{goal?'KCAL GOAL':'YOUR GOAL'}</span></span></div>
  <div className="dashboard-grid"><section className="workout-column">
+  <BodyTrendCard nutrition={nutrition} today={today}/>
   <section className="day-card-shell" aria-label="Food day">
    <div className="day-navigation"><button className="icon-button" aria-label="Previous day" onClick={()=>onDay(-1)}><ArrowLeft size={20}/></button><button className="day-label" onClick={onToday}><strong>{dayName}</strong><span>{new Date(date+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric'})}</span></button><button className="icon-button" aria-label="Next day" onClick={()=>onDay(1)}><ArrowRight size={20}/></button></div>
    <div className={`session-hero day-hero food-hero ${entries.length?'food':'unstarted'}`} onTouchStart={e=>{const t=e.touches[0];touch.current={x:t.clientX,y:t.clientY};}} onTouchEnd={e=>{if(!touch.current)return;const dx=e.changedTouches[0].clientX-touch.current.x,dy=e.changedTouches[0].clientY-touch.current.y;touch.current=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)onDay(dx<0?1:-1);}}>
@@ -107,6 +109,23 @@ export function FuelCard({nutrition,today,onLog,onSettings}:{nutrition:Nutrition
   {goal.mode!=='build'&&<p className={`goal-mode ${goal.mode}`}>{goal.title}</p>}
   <div className="macro-meters"><Meter label="Calories" value={total.kcal} goal={goal.kcal} unit="kcal" left={left.kcal}/><Meter label="Protein" value={total.protein} goal={goal.protein} unit="g" left={left.protein}/><Meter label="Carbs" value={total.carbs} goal={goal.carbs} unit="g" left={left.carbs}/><Meter label="Fat" value={total.fat} goal={goal.fat} unit="g" left={left.fat}/><Meter label="Fibre" value={total.fiber} goal={goal.fiber} unit="g" left={left.fiber}/></div>
   <NextMealLine goal={goal} day={day}/></section>;
+}
+
+const clock12=(t?:string|null)=>t?new Date(`2000-01-01T${t}:00`).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}):'';
+// Last night's sleep, filed under the morning you woke. Shown on Today.
+export function SleepCard({nutrition,today,ready,notify}:{nutrition:NutritionStore;today:string;ready:boolean;notify:(s:string)=>void}){
+ const saved=nutrition.body.sleep?.[today],logged=saved&&saved.hours?saved:null,average=sleepAverage(nutrition.body,today);
+ const[open,setOpen]=useState(false),[bed,setBed]=useState(''),[wake,setWake]=useState(''),[hours,setHours]=useState('');
+ useEffect(()=>{setBed(logged?.bed||'');setWake(logged?.wake||'');setHours(logged&&!logged.bed?String(logged.hours):'');},[today,logged?.bed,logged?.wake,logged?.hours]);
+ const fromTimes=bed&&wake?sleepHours(bed,wake):null,typed=Number(hours),total=fromTimes??(hours.trim()!==''&&Number.isFinite(typed)&&typed>0&&typed<=24?Math.round(typed*100)/100:null);
+ return <section className="fuel-card sleep-card" aria-label="Last night’s sleep"><div className="fuel-head"><div><span className="tiny">LAST NIGHT’S SLEEP</span><h3>{logged?sleepText(logged.hours!):'Not logged'}{logged?.bed&&logged.wake&&<small> {clock12(logged.bed)} to {clock12(logged.wake)}</small>}</h3></div><button className="secondary" aria-expanded={open} onClick={()=>setOpen(v=>!v)}><Moon size={16}/> {logged?'Edit':'Log sleep'}</button></div>
+  {average&&<p className="goal-note">{average.nights}-night average {sleepText(average.hours)}.{average.hours<7?' Under 7 hours makes it harder to recover and gain muscle.':''}</p>}
+  {open&&<form className="sleep-form" onSubmit={e=>{e.preventDefault();if(total===null)return;if(nutrition.saveSleep(today,{bed:fromTimes?bed:null,wake:fromTimes?wake:null,hours:total})){setOpen(false);notify(`Sleep logged · ${sleepText(total)}`);}}}>
+   <div className="form-grid"><label>Went to bed<input type="time" value={bed} onChange={e=>setBed(e.target.value)}/></label><label>Woke up<input type="time" value={wake} onChange={e=>setWake(e.target.value)}/></label><label>Or total hours<input type="number" inputMode="decimal" min="0.25" max="24" step="0.25" value={fromTimes?'':hours} placeholder={fromTimes?String(fromTimes):'7.5'} disabled={!!fromTimes} onChange={e=>setHours(e.target.value)}/></label></div>
+   <p className="guide-reference">Enter both times, or just the hours you slept. {fromTimes?`That is ${sleepText(fromTimes)}.`:'A wake time earlier than bedtime counts as the next morning.'}</p>
+   <div className="food-actions"><button type="submit" className="secondary" disabled={!ready||total===null}>Save sleep <Check size={16}/></button>{logged&&<button type="button" className="text-button" disabled={!ready} onClick={()=>{if(nutrition.saveSleep(today,{hours:null})){setOpen(false);notify('Sleep entry cleared.');}}}><Trash2 size={15}/> Clear</button>}</div>
+  </form>}
+ </section>;
 }
 
 function GoalCard({goal,onSettings}:{goal:Goals|null;onSettings:()=>void}){

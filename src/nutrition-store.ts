@@ -1,7 +1,7 @@
 import {useEffect,useRef,useState} from 'react';
 import type {FirebaseApp} from 'firebase/app';
 import {collection,doc,onSnapshot,setDoc,updateDoc,type Firestore} from 'firebase/firestore';
-import {bodyDefaults,type Body,type FoodDay,type FoodEntry,type Measurement} from './nutrition';
+import {bodyDefaults,type Body,type FoodDay,type FoodEntry,type Measurement,type Sleep} from './nutrition';
 import {validDate,dateKey} from './model';
 import {estimateFood} from './food-ai';
 
@@ -14,7 +14,7 @@ function preserve(scope:string,next:Partial<Copy>){
  try{
   const old=JSON.parse(localStorage.getItem(backupKey+scope)||'null') as Copy|null,days={...(old?.days||{})};
   Object.values(next.days||{}).forEach(d=>{days[d.date]={date:d.date,entries:{...(days[d.date]?.entries||{}),...d.entries}};});
-  const body=next.body?{...next.body,measurements:{...(old?.body?.measurements||{}),...next.body.measurements}}:old?.body||bodyDefaults;
+  const body=next.body?{...next.body,measurements:{...(old?.body?.measurements||{}),...next.body.measurements},sleep:{...(old?.body?.sleep||{}),...next.body.sleep}}:old?.body||bodyDefaults;
   localStorage.setItem(backupKey+scope,JSON.stringify({days,body}));
  }catch{/* Storage full: the Firestore cache still holds queued writes. */}
 }
@@ -37,7 +37,7 @@ export function useNutritionStore({app,db,scope,canWrite,track,setError}:{app:Fi
   },failed);
   const stopBody=onSnapshot(doc(db,'users',scope,'nutrition','settings'),{includeMetadataChanges:true},s=>{
    if(!live||!s.exists())return;
-   const next={...bodyDefaults,...s.data()} as Body;next.measurements=next.measurements||{};
+   const next={...bodyDefaults,...s.data()} as Body;next.measurements=next.measurements||{};next.sleep=next.sleep||{};
    setBody(next);preserve(scope,{body:next});
   },failed);
   return()=>{live=false;stopFood();stopBody();};
@@ -69,7 +69,14 @@ export function useNutritionStore({app,db,scope,canWrite,track,setError}:{app:Fi
   preserve(scope,{body:{...current.current.body,measurements:{[date]:saved}}});
   track(setDoc(bodyRef(),{measurements:{[date]:saved}},{merge:true}));return true;
  }
+ // Clearing a night stores nulls, like measurements.
+ function saveSleep(date:string,s:Sleep){
+  if(!canWrite()||!okDate(date))return false;
+  const saved={bed:s.bed||null,wake:s.wake||null,hours:s.hours??null};
+  preserve(scope,{body:{...current.current.body,sleep:{[date]:saved}}});
+  track(setDoc(bodyRef(),{sleep:{[date]:saved}},{merge:true}));return true;
+ }
  const estimate=(text:string)=>estimateFood(app,text);
- return{days,body,addFood,updateFood,removeFood,restoreFood,saveBody,saveMeasurement,estimate};
+ return{days,body,addFood,updateFood,removeFood,restoreFood,saveBody,saveMeasurement,saveSleep,estimate};
 }
 export type NutritionStore=ReturnType<typeof useNutritionStore>;

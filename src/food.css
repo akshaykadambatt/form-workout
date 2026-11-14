@@ -18,6 +18,11 @@
 .fuel-head h3 small{white-space:nowrap;font-size:14px;font-weight:400;color:var(--muted);letter-spacing:0}
 .fuel-card .macro-meters{grid-template-columns:repeat(5,minmax(0,1fr))}
 .fuel-card .meter-track i{background:var(--lime)}
+.sleep-card{gap:12px}
+.sleep-card .goal-note{margin:0}
+.sleep-form{display:grid;gap:12px}
+.sleep-form .guide-reference{margin:0}
+.sleep-form input{width:100%}
 .next-meal{background:var(--raised);border-radius:var(--radius-small);padding:14px 16px;display:grid;gap:4px;margin:0}
 .workout-column>.next-meal{margin:14px 0 4px;background:var(--surface);border:var(--border-width) solid var(--line)}
 .next-meal strong{font-size:18px}

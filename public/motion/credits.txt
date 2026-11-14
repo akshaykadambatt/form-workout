@@ -98,8 +98,18 @@ File: /motion/wger-371.mp4
 Source: https://wger.de/media/exercise-video/371/6aae16b4-01b9-4eb4-935c-3250f84d2c59.MOV
 Author: Goulart · License: CC BY-SA 4.0
 
+Romanian Deadlift
+File: /motion/wger-507.mp4
+Source: https://wger.de/media/exercise-video/507/307e7276-a14d-4ea0-b579-f5b0dbc6f5af.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
+Skullcrusher SZ-bar
+File: /motion/wger-246.mp4
+Source: https://wger.de/media/exercise-video/246/2a194d11-ff5d-4bdf-849e-1c441cf7b0b1.MOV
+Author: Goulart · License: CC BY-SA 4.0
+
 Your Move videos
-Free commercial app-use licence: https://ymove.app/free-exercise-videos
+Exercise videos by Your Move (https://ymove.app). Free commercial app-use licence: https://ymove.app/free-exercise-videos
 These clips are part of Form; they may not be resold or redistributed as a standalone product or library.
 Changes: resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed.
 
@@ -123,65 +133,68 @@ Leg Extension — Your Move
 File: /motion/ymove-af0c3d19-5ee2-4a19-8688-f8504bb33e3c.mp4
 Source: https://ymove.app/api/free/af0c3d19-5ee2-4a19-8688-f8504bb33e3c
 
+Lat Pulldown — Your Move
+File: /motion/ymove-5971eaa2-5264-49cc-99c2-1310305c5342.mp4
+Source: https://ymove.app/api/free/5971eaa2-5264-49cc-99c2-1310305c5342
+
+Cable Crossover (Mid) — Your Move
+File: /motion/ymove-e2b1d801-055a-4dc5-ad6e-486e3dbfcfb7.mp4
+Source: https://ymove.app/api/free/e2b1d801-055a-4dc5-ad6e-486e3dbfcfb7
+
+Free Exercise DB photo loops
+Each loop cross-fades the two reference photos of one movement from https://github.com/yuhonas/free-exercise-db (Unlicense: https://unlicense.org/).
+Changes: resized to 640 pixels and converted to a looping H.264 clip.
+
+Good Morning — Free Exercise DB
+File: /motion/fedb-Good_Morning.mp4
+Source: https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Good_Morning
+
+Cable Crunch — Free Exercise DB
+File: /motion/fedb-Cable_Crunch.mp4
+Source: https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Crunch
+
+Bent Over Barbell Row — Free Exercise DB
+File: /motion/fedb-Bent_Over_Barbell_Row.mp4
+Source: https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Bent_Over_Barbell_Row
+
+Reverse Crunch — Free Exercise DB
+File: /motion/fedb-Reverse_Crunch.mp4
+Source: https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Reverse_Crunch
+
+Standing Military Press — Free Exercise DB
+File: /motion/fedb-Standing_Military_Press.mp4
+Source: https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Standing_Military_Press
+
+T-Bar Row with Handle — Free Exercise DB
+File: /motion/fedb-T-Bar_Row_with_Handle.mp4
+Source: https://github.com/yuhonas/free-exercise-db/tree/main/exercises/T-Bar_Row_with_Handle
+
+Pull Through — Free Exercise DB
+File: /motion/fedb-Pull_Through.mp4
+Source: https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Pull_Through
+
+Thigh Abductor — Free Exercise DB
+File: /motion/fedb-Thigh_Abductor.mp4
+Source: https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Thigh_Abductor
+
+Weighted Crunches — Free Exercise DB
+File: /motion/fedb-Weighted_Crunches.mp4
+Source: https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Weighted_Crunches
+
 YouTube demonstrations
 Played through the original creator’s embedded YouTube player. Videos are not downloaded, modified or redistributed. Copyright remains with each creator. Source metadata checked 2026-10-08.
-
-How To: Barbell Stiff-Leg Deadlift — ScottHermanFitness
-Source: https://www.youtube.com/watch?v=1uDiW5--rAE
-
-The Good Morning — CrossFit
-Source: https://www.youtube.com/watch?v=YA-h3n9L4YU
-
-Cable Crunch: Do It Right! — Testosterone Nation
-Source: https://www.youtube.com/watch?v=ToJeyhydUxU
-
-How To: Lat Pulldown | 3 GOLDEN RULES — ScottHermanFitness
-Source: https://www.youtube.com/watch?v=CAwf7n6Luuc
 
 Supinated pull-down — Jean-Philippe Rioux
 Source: https://www.youtube.com/watch?v=kOQt1sfmgqw
 
-How To Build a Thick Back With Perfect Rowing Technique (Pendlay Row/ Helms Row) — Jeff Nippard
-Source: https://www.youtube.com/watch?v=axoeDmW0oAY
-
-How to do Shoulders Front Machine Side Lateral Raise correctly. Abawi Fit — Abawi Fit
-Source: https://www.youtube.com/watch?v=0FUpcwj_1z4
-
-2:1 Accentuated Eccentric Leg Extension — Testosterone Nation
-Source: https://www.youtube.com/watch?v=E_pTa-uagpE
-
 How To: Seated Single-Leg Extension (Cybex) — ScottHermanFitness
 Source: https://www.youtube.com/watch?v=I1F58vIjbvc
 
-Build Bigger Shoulders With Perfect Training Technique (The Overhead Press) — Jeff Nippard
-Source: https://www.youtube.com/watch?v=_RlRDWO2jfg
-
-How To: Close-Grip Barbell Bench Press — ScottHermanFitness
-Source: https://www.youtube.com/watch?v=nEF0bv2FW94
-
 Banded Chest Supported Rows — Testosterone Nation
 Source: https://www.youtube.com/watch?v=WJIt0SQekVU
 
-How to do Incline T Bar Row correctly? Avoid any injury. #75 — Abawi Fit
-Source: https://www.youtube.com/watch?v=sw1LwNZ3F_w
-
 Banded Chest Supported Rows — Testosterone Nation
 Source: https://www.youtube.com/watch?v=WJIt0SQekVU
-
-Exercise Index - Pull Through — mountaindog1
-Source: https://www.youtube.com/watch?v=WljI_Cg7ths
-
-How to Properly Use The Hip Abduction Machine With Good Form (Exercise Demonstration) — Gerardi Performance
-Source: https://www.youtube.com/watch?v=HngwgIoABFg
-
-Weighted Crunch — LivestrongWoman
-Source: https://www.youtube.com/watch?v=Pxkw6dUt_Ok
-
-How To Perform A Neutral Grip Pull Up — JPS Health & Fitness
-Source: https://www.youtube.com/watch?v=Zr8hHd2Q2Eo
-
-How To Build Huge Triceps with Optimal Training Technique — Jeff Nippard
-Source: https://www.youtube.com/watch?v=popGXI-qs98
 
 Movement Demo - The Deficit Deadlift — Rogue Fitness
 Source: https://www.youtube.com/watch?v=CpWsUsqBtN8
@@ -240,9 +253,6 @@ Source: https://www.youtube.com/watch?v=MTd0vKkvwfM
 California Press — robkingfitness
 Source: https://www.youtube.com/watch?v=fCUeeaWBBSs
 
-Reverse Crunch - Exercise Demo — Group HIIT
-Source: https://www.youtube.com/watch?v=tuTC6pE2l9c
-
 How to Do a Proper Underhand Barbell Row with John Berardi — Precision Nutrition
 Source: https://www.youtube.com/watch?v=X_9L54FVD0c
 
@@ -257,9 +267,6 @@ Source: https://www.youtube.com/watch?v=LoBBo1dtY6I
 
 Cable Standing Hip Abduction — Program Videos
 Source: https://www.youtube.com/watch?v=DkxcKY5Tt7Q
-
-How To Work ALL Parts of Your Chest with the Cable Chest Fly! — Mind Pump TV
-Source: https://www.youtube.com/watch?v=HXVtFoExms0
 
 Cable Overhead Tricep Extension — Program Videos
 Source: https://www.youtube.com/watch?v=qIW3z-ydg-M

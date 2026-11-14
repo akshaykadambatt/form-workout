@@ -9,8 +9,9 @@ import {useAppUpdates,UpdateBanner,UpdateSettings} from './AppUpdates';
 import {ExerciseMotion} from './ExerciseMotion';
 import {WorkoutPicker} from './WorkoutPicker';
 import {exportDeviceCopies} from './device-journal';
-import {FoodPage,FuelCard,BodySettings,offNutrition} from './FoodViews';
+import {FoodPage,FuelCard,SleepCard,BodySettings,offNutrition} from './FoodViews';
 import {caloriesByDate} from './nutrition';
+import {ProgressCard} from './ProgressViews';
 type Asset={image:string;reference:string;instructions:string[];source:string;demo:string};
 const assets=refs as Record<string,Asset>;
 const friendly=(s:string)=>s.replace('Eccentric-Accentuated/Constant-Tension ','').replace('Eccentric-Accentuated ','').replace('Constant-Tension ','').replace('Unilateral Eccentric-Overloaded ','').replace('Eccentric-Overloaded ','');
@@ -76,8 +77,10 @@ export function AppView({store}:{store:ReturnType<typeof useWorkoutStore>}){
  {user&&store.deviceConflicts>0&&<div className="error-banner" role="status">A device workout uses the same slot as a different cloud workout. Both copies are preserved; export device backups for recovery.<button onClick={exportBackups}><Download size={18}/> Export</button></div>}
  {user&&tab==='today'&&<><div className="page-heading"><div><p className="eyebrow">{review?'YOUR WORKOUT LOG':displayDate(browseDate)}</p><h1>{review?'A session, saved.':'Make room for you.'}</h1></div><span className="outline-tag">WEEK {String(shown.week).padStart(2,'0')} <span>/ 09</span></span></div>
  <div className="dashboard-grid"><section className="workout-column">
+ {!review&&<ProgressCard sessions={sessions}/>}
  <DayCard date={selected?.date||browseDate} today={today} session={selected} template={template} state={selected?sessionState(selected,sessions):''} active={active} ready={ready} review={!!review} onDay={changeDay} onToday={goToday} onStart={start} onResume={()=>{if(selected&&store.resumeSession(selected)){setReview(null);setIsEditing(false);setBrowseDate(selected.date);}}} onPause={()=>{if(selected&&store.pauseSession(selected)){setTimerEnd(null);notify('Session paused. Your sets are saved.');}}} onEdit={()=>selected&&openSession(selected,true)}/>
  {!review&&browseDate===today&&<FuelCard nutrition={nutrition} today={today} onLog={()=>openFood(today)} onSettings={()=>setTab('settings')}/>}
+ {!review&&browseDate===today&&<SleepCard nutrition={nutrition} today={today} ready={ready} notify={notify}/>}
  {active&&selected?.id!==active.id&&<div className="session-notice"><p>A session from {active.date} is still open.</p><button className="secondary" onClick={()=>{setReview(null);setBrowseDate(active.date);}}>Continue session <ArrowRight size={17}/></button></div>}
  {selected&&<div className="session-view-tools"><span>{isEditing?'Editing · set changes save automatically':readOnly?'Viewing saved sets':'Logging your session'}</span><div>{!isEditing?<button className="text-button" onClick={()=>openSession(selected,true)}><Pencil size={16}/> Edit</button>:<button className="text-button" onClick={()=>setIsEditing(false)}><Check size={16}/> Done editing</button>}{!selected.deletedAt&&<button className="text-button" onClick={()=>setDeleting(selected)}><Trash2 size={16}/> Delete</button>}</div></div>}
  {selected&&isEditing&&<SessionDetails key={selected.id} session={selected} ready={ready} onSave={details=>{if(store.updateSessionDetails(selected,details)){setBrowseDate(details.date);notify('Session details saved.');}}}/>}

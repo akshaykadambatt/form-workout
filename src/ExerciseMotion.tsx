@@ -23,7 +23,7 @@ function Movement({demo,allowed}:{demo:Clip|Sequence;allowed:boolean}){
   {demo.type==='sequence'&&<div className="motion-variants" aria-label="Movement parts">{demo.parts.map((p,i)=><button key={p.label} aria-pressed={part===i} onClick={()=>setPart(i)}>{p.label}</button>)}</div>}
   <MotionPlayer key={part} demo={clip} allowed={allowed}/>
   <p className="motion-caption motion-variation">Follow your program notes for tempo, grip, assistance and partial reps.</p>
-  <p className="motion-credit"><a href={clip.source} target="_blank" rel="noopener noreferrer">{clip.label} · {clip.author}{clip.type==='video'&&clip.provider!==clip.author?` / ${clip.provider}`:''}</a>{clip.type==='video'&&<> · <a href={clip.licenseUrl} target="_blank" rel="noopener noreferrer">{clip.license}</a> · resized, muted.</>}</p>
+  <p className="motion-credit"><a href={clip.source} target="_blank" rel="noopener noreferrer">{clip.label} · {clip.author}{clip.type==='video'&&clip.provider!==clip.author?` / ${clip.provider}`:''}</a>{clip.type==='video'&&<> · <a href={clip.licenseUrl} target="_blank" rel="noopener noreferrer">{clip.license}</a> · {clip.license==='Unlicense'?'two photos, looped':'resized, muted'}.</>}</p>
  </div>;
 }
 

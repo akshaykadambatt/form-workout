@@ -312,36 +312,52 @@
     "changes": "Resized to fit 640 pixels; converted to H.264 at 24 fps; audio removed."
   },
   "eccentric-accentuated-stiff-leg-deadlift": {
-    "type": "youtube",
-    "videoId": "1uDiW5--rAE",
-    "label": "How To: Barbell Stiff-Leg Deadlift",
-    "author": "ScottHermanFitness",
-    "source": "https://www.youtube.com/watch?v=1uDiW5--rAE",
-    "poster": "https://i.ytimg.com/vi/1uDiW5--rAE/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/wger-507.mp4",
+    "poster": "/motion/wger-507.jpg",
+    "label": "Romanian Deadlift",
+    "source": "https://wger.de/media/exercise-video/507/307e7276-a14d-4ea0-b579-f5b0dbc6f5af.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed.",
+    "provider": "wger"
   },
   "good-morning": {
-    "type": "youtube",
-    "videoId": "YA-h3n9L4YU",
-    "label": "The Good Morning",
-    "author": "CrossFit",
-    "source": "https://www.youtube.com/watch?v=YA-h3n9L4YU",
-    "poster": "https://i.ytimg.com/vi/YA-h3n9L4YU/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/fedb-Good_Morning.mp4",
+    "poster": "/images/Good_Morning.jpg",
+    "label": "Good Morning",
+    "source": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Good_Morning",
+    "author": "Free Exercise DB",
+    "license": "Unlicense",
+    "licenseUrl": "https://unlicense.org/",
+    "changes": "Two reference photos resized to 640 pixels and cross-faded into a looping H.264 clip.",
+    "provider": "Free Exercise DB"
   },
   "cable-crunch": {
-    "type": "youtube",
-    "videoId": "ToJeyhydUxU",
-    "label": "Cable Crunch: Do It Right!",
-    "author": "Testosterone Nation",
-    "source": "https://www.youtube.com/watch?v=ToJeyhydUxU",
-    "poster": "https://i.ytimg.com/vi/ToJeyhydUxU/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/fedb-Cable_Crunch.mp4",
+    "poster": "/images/Cable_Crunch.jpg",
+    "label": "Cable Crunch",
+    "source": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Crunch",
+    "author": "Free Exercise DB",
+    "license": "Unlicense",
+    "licenseUrl": "https://unlicense.org/",
+    "changes": "Two reference photos resized to 640 pixels and cross-faded into a looping H.264 clip.",
+    "provider": "Free Exercise DB"
   },
   "lat-pulldown": {
-    "type": "youtube",
-    "videoId": "CAwf7n6Luuc",
-    "label": "How To: Lat Pulldown | 3 GOLDEN RULES",
-    "author": "ScottHermanFitness",
-    "source": "https://www.youtube.com/watch?v=CAwf7n6Luuc",
-    "poster": "https://i.ytimg.com/vi/CAwf7n6Luuc/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/ymove-5971eaa2-5264-49cc-99c2-1310305c5342.mp4",
+    "poster": "/motion/ymove-5971eaa2-5264-49cc-99c2-1310305c5342.jpg",
+    "label": "Lat Pulldown",
+    "author": "Your Move",
+    "provider": "Your Move",
+    "source": "https://ymove.app/api/free/5971eaa2-5264-49cc-99c2-1310305c5342",
+    "license": "Free app-use licence",
+    "licenseUrl": "https://ymove.app/free-exercise-videos",
+    "changes": "Resized to fit 640 pixels; converted to H.264 at 24 fps; audio removed."
   },
   "supinated-lat-pulldown": {
     "type": "youtube",
@@ -352,39 +368,28 @@
     "poster": "https://i.ytimg.com/vi/kOQt1sfmgqw/hqdefault.jpg"
   },
   "pendlay-row-barbell-bent-over-row": {
-    "type": "sequence",
-    "parts": [
-      {
-        "label": "Pendlay row",
-        "demo": {
-          "type": "youtube",
-          "videoId": "axoeDmW0oAY",
-          "label": "How To Build a Thick Back With Perfect Rowing Technique (Pendlay Row/ Helms Row)",
-          "author": "Jeff Nippard",
-          "source": "https://www.youtube.com/watch?v=axoeDmW0oAY",
-          "poster": "https://i.ytimg.com/vi/axoeDmW0oAY/hqdefault.jpg"
-        }
-      },
-      {
-        "label": "Bent-over row",
-        "demo": {
-          "type": "youtube",
-          "videoId": "FWJR5Ve8bnQ",
-          "label": "How to do the BENT-OVER BARBELL ROW! | 2 Minute Tutorial",
-          "author": "Max Euceda",
-          "source": "https://www.youtube.com/watch?v=FWJR5Ve8bnQ",
-          "poster": "https://i.ytimg.com/vi/FWJR5Ve8bnQ/hqdefault.jpg"
-        }
-      }
-    ]
+    "type": "video",
+    "src": "/motion/fedb-Bent_Over_Barbell_Row.mp4",
+    "poster": "/images/Bent_Over_Barbell_Row.jpg",
+    "label": "Bent Over Barbell Row",
+    "source": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Bent_Over_Barbell_Row",
+    "author": "Free Exercise DB",
+    "license": "Unlicense",
+    "licenseUrl": "https://unlicense.org/",
+    "changes": "Two reference photos resized to 640 pixels and cross-faded into a looping H.264 clip.",
+    "provider": "Free Exercise DB"
   },
   "machine-lateral-raise": {
-    "type": "youtube",
-    "videoId": "0FUpcwj_1z4",
-    "label": "How to do Shoulders Front Machine Side Lateral Raise correctly. Abawi Fit",
-    "author": "Abawi Fit",
-    "source": "https://www.youtube.com/watch?v=0FUpcwj_1z4",
-    "poster": "https://i.ytimg.com/vi/0FUpcwj_1z4/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/wger-348.mp4",
+    "poster": "/motion/wger-348.jpg",
+    "label": "Lateral Raises",
+    "source": "https://wger.de/media/exercise-video/348/de69928a-8a35-4096-821c-1f46de5e0e03.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed.",
+    "provider": "wger"
   },
   "deadlift": {
     "type": "video",
@@ -399,12 +404,16 @@
     "changes": "Resized to fit 640 pixels; converted to H.264 at 24 fps; audio removed."
   },
   "unilateral-eccentric-overloaded-leg-extension": {
-    "type": "youtube",
-    "videoId": "E_pTa-uagpE",
-    "label": "2:1 Accentuated Eccentric Leg Extension",
-    "author": "Testosterone Nation",
-    "source": "https://www.youtube.com/watch?v=E_pTa-uagpE",
-    "poster": "https://i.ytimg.com/vi/E_pTa-uagpE/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/ymove-af0c3d19-5ee2-4a19-8688-f8504bb33e3c.mp4",
+    "poster": "/motion/ymove-af0c3d19-5ee2-4a19-8688-f8504bb33e3c.jpg",
+    "label": "Leg Extension",
+    "author": "Your Move",
+    "provider": "Your Move",
+    "source": "https://ymove.app/api/free/af0c3d19-5ee2-4a19-8688-f8504bb33e3c",
+    "license": "Free app-use licence",
+    "licenseUrl": "https://ymove.app/free-exercise-videos",
+    "changes": "Resized to fit 640 pixels; converted to H.264 at 24 fps; audio removed."
   },
   "single-leg-leg-extension": {
     "type": "youtube",
@@ -415,52 +424,76 @@
     "poster": "https://i.ytimg.com/vi/I1F58vIjbvc/hqdefault.jpg"
   },
   "reverse-crunch": {
-    "type": "youtube",
-    "videoId": "tuTC6pE2l9c",
-    "label": "Reverse Crunch - Exercise Demo",
-    "author": "Group HIIT",
-    "source": "https://www.youtube.com/watch?v=tuTC6pE2l9c",
-    "poster": "https://i.ytimg.com/vi/tuTC6pE2l9c/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/fedb-Reverse_Crunch.mp4",
+    "poster": "/images/Reverse_Crunch.jpg",
+    "label": "Reverse Crunch",
+    "source": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Reverse_Crunch",
+    "author": "Free Exercise DB",
+    "license": "Unlicense",
+    "licenseUrl": "https://unlicense.org/",
+    "changes": "Two reference photos resized to 640 pixels and cross-faded into a looping H.264 clip.",
+    "provider": "Free Exercise DB"
   },
   "barbell-overhead-press": {
-    "type": "youtube",
-    "videoId": "_RlRDWO2jfg",
-    "label": "Build Bigger Shoulders With Perfect Training Technique (The Overhead Press)",
-    "author": "Jeff Nippard",
-    "source": "https://www.youtube.com/watch?v=_RlRDWO2jfg",
-    "poster": "https://i.ytimg.com/vi/_RlRDWO2jfg/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/fedb-Standing_Military_Press.mp4",
+    "poster": "/images/Standing_Military_Press.jpg",
+    "label": "Standing Military Press",
+    "source": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Standing_Military_Press",
+    "author": "Free Exercise DB",
+    "license": "Unlicense",
+    "licenseUrl": "https://unlicense.org/",
+    "changes": "Two reference photos resized to 640 pixels and cross-faded into a looping H.264 clip.",
+    "provider": "Free Exercise DB"
   },
   "barbell-close-grip-bench-press": {
-    "type": "youtube",
-    "videoId": "nEF0bv2FW94",
-    "label": "How To: Close-Grip Barbell Bench Press",
-    "author": "ScottHermanFitness",
-    "source": "https://www.youtube.com/watch?v=nEF0bv2FW94",
-    "poster": "https://i.ytimg.com/vi/nEF0bv2FW94/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/wger-73.mp4",
+    "poster": "/motion/wger-73.jpg",
+    "label": "Bench Press",
+    "source": "https://wger.de/media/exercise-video/73/2bdb390c-312c-4497-a722-5eed2c823e5a.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed.",
+    "provider": "wger"
   },
   "cable-flye-21s": {
-    "type": "youtube",
-    "videoId": "HXVtFoExms0",
-    "label": "How To Work ALL Parts of Your Chest with the Cable Chest Fly!",
-    "author": "Mind Pump TV",
-    "source": "https://www.youtube.com/watch?v=HXVtFoExms0",
-    "poster": "https://i.ytimg.com/vi/HXVtFoExms0/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/ymove-e2b1d801-055a-4dc5-ad6e-486e3dbfcfb7.mp4",
+    "poster": "/motion/ymove-e2b1d801-055a-4dc5-ad6e-486e3dbfcfb7.jpg",
+    "label": "Cable Crossover (Mid)",
+    "author": "Your Move",
+    "provider": "Your Move",
+    "source": "https://ymove.app/api/free/e2b1d801-055a-4dc5-ad6e-486e3dbfcfb7",
+    "license": "Free app-use licence",
+    "licenseUrl": "https://ymove.app/free-exercise-videos",
+    "changes": "Resized to fit 640 pixels; converted to H.264 at 24 fps; audio removed."
   },
   "machine-chest-supported-row-w-band": {
-    "type": "youtube",
-    "videoId": "WJIt0SQekVU",
-    "label": "Banded Chest Supported Rows",
-    "author": "Testosterone Nation",
-    "source": "https://www.youtube.com/watch?v=WJIt0SQekVU",
-    "poster": "https://i.ytimg.com/vi/WJIt0SQekVU/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/wger-512.mp4",
+    "poster": "/motion/wger-512.jpg",
+    "label": "Rowing seated, narrow grip",
+    "source": "https://wger.de/media/exercise-video/512/fff4c294-93f0-4926-b3a2-bf59ad4afaa5.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed.",
+    "provider": "wger"
   },
   "seated-t-bar-row": {
-    "type": "youtube",
-    "videoId": "sw1LwNZ3F_w",
-    "label": "How to do Incline T Bar Row correctly? Avoid any injury. #75",
-    "author": "Abawi Fit",
-    "source": "https://www.youtube.com/watch?v=sw1LwNZ3F_w",
-    "poster": "https://i.ytimg.com/vi/sw1LwNZ3F_w/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/fedb-T-Bar_Row_with_Handle.mp4",
+    "poster": "/images/T-Bar_Row_with_Handle.jpg",
+    "label": "T-Bar Row with Handle",
+    "source": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/T-Bar_Row_with_Handle",
+    "author": "Free Exercise DB",
+    "license": "Unlicense",
+    "licenseUrl": "https://unlicense.org/",
+    "changes": "Two reference photos resized to 640 pixels and cross-faded into a looping H.264 clip.",
+    "provider": "Free Exercise DB"
   },
   "banded-chest-supported-t-bar-row": {
     "type": "youtube",
@@ -471,44 +504,64 @@
     "poster": "https://i.ytimg.com/vi/WJIt0SQekVU/hqdefault.jpg"
   },
   "a2-cable-pull-through": {
-    "type": "youtube",
-    "videoId": "WljI_Cg7ths",
-    "label": "Exercise Index - Pull Through",
-    "author": "mountaindog1",
-    "source": "https://www.youtube.com/watch?v=WljI_Cg7ths",
-    "poster": "https://i.ytimg.com/vi/WljI_Cg7ths/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/fedb-Pull_Through.mp4",
+    "poster": "/images/Pull_Through.jpg",
+    "label": "Pull Through",
+    "source": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Pull_Through",
+    "author": "Free Exercise DB",
+    "license": "Unlicense",
+    "licenseUrl": "https://unlicense.org/",
+    "changes": "Two reference photos resized to 640 pixels and cross-faded into a looping H.264 clip.",
+    "provider": "Free Exercise DB"
   },
   "machine-hip-abduction": {
-    "type": "youtube",
-    "videoId": "HngwgIoABFg",
-    "label": "How to Properly Use The Hip Abduction Machine With Good Form (Exercise Demonstration)",
-    "author": "Gerardi Performance",
-    "source": "https://www.youtube.com/watch?v=HngwgIoABFg",
-    "poster": "https://i.ytimg.com/vi/HngwgIoABFg/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/fedb-Thigh_Abductor.mp4",
+    "poster": "/images/Thigh_Abductor.jpg",
+    "label": "Thigh Abductor",
+    "source": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Thigh_Abductor",
+    "author": "Free Exercise DB",
+    "license": "Unlicense",
+    "licenseUrl": "https://unlicense.org/",
+    "changes": "Two reference photos resized to 640 pixels and cross-faded into a looping H.264 clip.",
+    "provider": "Free Exercise DB"
   },
   "weighted-crunch": {
-    "type": "youtube",
-    "videoId": "Pxkw6dUt_Ok",
-    "label": "Weighted Crunch",
-    "author": "LivestrongWoman",
-    "source": "https://www.youtube.com/watch?v=Pxkw6dUt_Ok",
-    "poster": "https://i.ytimg.com/vi/Pxkw6dUt_Ok/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/fedb-Weighted_Crunches.mp4",
+    "poster": "/images/Weighted_Crunches.jpg",
+    "label": "Weighted Crunches",
+    "source": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Weighted_Crunches",
+    "author": "Free Exercise DB",
+    "license": "Unlicense",
+    "licenseUrl": "https://unlicense.org/",
+    "changes": "Two reference photos resized to 640 pixels and cross-faded into a looping H.264 clip.",
+    "provider": "Free Exercise DB"
   },
   "neutral-grip-pull-up-negative-neutral-grip-pull-up": {
-    "type": "youtube",
-    "videoId": "Zr8hHd2Q2Eo",
-    "label": "How To Perform A Neutral Grip Pull Up",
-    "author": "JPS Health & Fitness",
-    "source": "https://www.youtube.com/watch?v=Zr8hHd2Q2Eo",
-    "poster": "https://i.ytimg.com/vi/Zr8hHd2Q2Eo/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/wger-475.mp4",
+    "poster": "/motion/wger-475.jpg",
+    "label": "Pull-ups",
+    "source": "https://wger.de/media/exercise-video/475/83067ffe-ccb9-4e22-8507-5131b211ce74.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed.",
+    "provider": "wger"
   },
   "myo-reps-floor-skull-crusher": {
-    "type": "youtube",
-    "videoId": "popGXI-qs98",
-    "label": "How To Build Huge Triceps with Optimal Training Technique",
-    "author": "Jeff Nippard",
-    "source": "https://www.youtube.com/watch?v=popGXI-qs98",
-    "poster": "https://i.ytimg.com/vi/popGXI-qs98/hqdefault.jpg"
+    "type": "video",
+    "src": "/motion/wger-246.mp4",
+    "poster": "/motion/wger-246.jpg",
+    "label": "Skullcrusher SZ-bar",
+    "source": "https://wger.de/media/exercise-video/246/2a194d11-ff5d-4bdf-849e-1c441cf7b0b1.MOV",
+    "author": "Goulart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized to fit 640 pixels, converted to H.264 at 24 fps, audio removed.",
+    "provider": "wger"
   },
   "deficit-deadlift": {
     "type": "youtube",

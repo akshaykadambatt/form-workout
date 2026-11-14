@@ -8,8 +8,10 @@ export type FoodEntry={id:string;at:number;meal:string;text:string;items:FoodIte
 export type FoodDay={date:string;entries:Record<string,FoodEntry>};
 export type Measurement={weightKg?:number|null;waistCm?:number|null};
 export type Activity='light'|'moderate'|'high';
-export type Body={heightCm:number|null;age:number|null;sex:'male'|'female'|'';activity:Activity;measurements:Record<string,Measurement>};
-export const bodyDefaults:Body={heightCm:null,age:null,sex:'',activity:'moderate',measurements:{}};
+// Sleep is filed under the date you woke up. Times are 24-hour "HH:MM".
+export type Sleep={bed?:string|null;wake?:string|null;hours:number|null};
+export type Body={heightCm:number|null;age:number|null;sex:'male'|'female'|'';activity:Activity;measurements:Record<string,Measurement>;sleep:Record<string,Sleep>};
+export const bodyDefaults:Body={heightCm:null,age:null,sex:'',activity:'moderate',measurements:{},sleep:{}};
 export const macroKeys=['kcal','protein','carbs','fat','fiber'] as const;
 export const meals=['Breakfast','Lunch','Smoothie','Snack','Dinner','Before bed'] as const;
 export const zero=():Macros=>({kcal:0,protein:0,carbs:0,fat:0,fiber:0});
@@ -87,6 +89,19 @@ export function goals(body:Body,date=dateKey()):Goals|null{
  if(!waist)notes.push('Add a waist measurement so carb goals can react to it.');
  if(!body.age||!body.sex)notes.push('Add age and sex for a closer estimate.');
  return{kcal,protein,carbs,fat,fiber,mode,title:plan.title,notes,bmr:Math.round(bmr),tdee:Math.round(tdee),weightKg:weight.value,waistCm:waist?.value??null,waistRatio,waistChange};
+}
+
+// ---------- Sleep ----------
+const clockMinutes=(t:string)=>{const m=/^(\d{1,2}):(\d{2})$/.exec(t);return m&&Number(m[1])<24&&Number(m[2])<60?Number(m[1])*60+Number(m[2]):null;};
+// Hours between bedtime and waking; a wake time earlier on the clock means the next morning.
+export function sleepHours(bed:string,wake:string):number|null{
+ const a=clockMinutes(bed),b=clockMinutes(wake);if(a===null||b===null||a===b)return null;
+ return Math.round(((b-a+1440)%1440)/60*100)/100;
+}
+export const sleepText=(hours:number)=>{const minutes=Math.round(hours*60);return `${Math.floor(minutes/60)} h ${String(minutes%60).padStart(2,'0')} min`;};
+export function sleepAverage(body:Body,today:string,nights=7):{hours:number;nights:number}|null{
+ const logged=Object.entries(body.sleep||{}).filter(([d,s])=>d<=today&&d>dayOffset(today,-nights)&&typeof s?.hours==='number'&&s.hours>0);
+ return logged.length?{hours:Math.round(logged.reduce((n,[,s])=>n+s.hours!,0)/logged.length*100)/100,nights:logged.length}:null;
 }
 
 // ---------- Remaining and next meal ----------

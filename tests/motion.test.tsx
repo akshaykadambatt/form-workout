@@ -27,7 +27,7 @@ it('covers every programmed movement, ships its media and includes video license
   for(const demo of clips){expect(credits).toContain(demo.source);expect(credits).toContain(demo.author);
    if(demo.type==='video'){
     expect(existsSync('public'+demo.src)).toBe(true);expect(existsSync('public'+demo.poster)).toBe(true);
-    expect(['CC BY-SA 4.0','Free app-use licence']).toContain(demo.license);
+    expect(['CC BY-SA 4.0','Free app-use licence','Unlicense']).toContain(demo.license);
    }else{expect(demo.type).toBe('youtube');expect(demo.videoId).toMatch(/^[\w-]{11}$/);expect(demo.source).toBe(`https://www.youtube.com/watch?v=${demo.videoId}`);}
   }
  }
@@ -65,18 +65,18 @@ it('offers a retry after a video error and handles blocked autoplay',async()=>{
  expect(screen.getByRole('button',{name:'Play demonstration'})).toBeTruthy();
 });
 it('loads YouTube only after a tap and removes the player when hidden without restarting automatically',async()=>{
- const {container,rerender}=render(<ExerciseMotion exercise={exercise('good-morning')}/>);
+ const {container,rerender}=render(<ExerciseMotion exercise={exercise('supinated-lat-pulldown')}/>);
  expect(container.querySelector('iframe')).toBeNull();
  await act(async()=>intersect([{isIntersecting:true}]));
  fireEvent.click(screen.getByRole('button',{name:/Play .* video/}));
  const iframe=container.querySelector('iframe')!;
- expect(iframe.src).toContain('youtube-nocookie.com/embed/YA-h3n9L4YU');
+ expect(iframe.src).toContain('youtube-nocookie.com/embed/kOQt1sfmgqw');
  expect(iframe.src).toContain('playsinline=1');
  expect(iframe.getAttribute('referrerpolicy')).toBe('strict-origin-when-cross-origin');
- expect(screen.getByRole('link',{name:'Open video'}).getAttribute('href')).toBe('https://www.youtube.com/watch?v=YA-h3n9L4YU');
- rerender(<ExerciseMotion exercise={exercise('good-morning')} allowed={false}/>);
+ expect(screen.getByRole('link',{name:'Open video'}).getAttribute('href')).toBe('https://www.youtube.com/watch?v=kOQt1sfmgqw');
+ rerender(<ExerciseMotion exercise={exercise('supinated-lat-pulldown')} allowed={false}/>);
  expect(container.querySelector('iframe')).toBeNull();
- rerender(<ExerciseMotion exercise={exercise('good-morning')}/>);
+ rerender(<ExerciseMotion exercise={exercise('supinated-lat-pulldown')}/>);
  expect(container.querySelector('iframe')).toBeNull();
  fireEvent.click(screen.getByRole('button',{name:/Play .* video/}));
  await act(async()=>intersect([{isIntersecting:false}]));
@@ -85,7 +85,7 @@ it('loads YouTube only after a tap and removes the player when hidden without re
  expect(container.querySelector('iframe')).toBeNull();
 });
 it('removes embedded playback when the app enters the background',async()=>{
- const {container}=render(<ExerciseMotion exercise={exercise('good-morning')}/>);
+ const {container}=render(<ExerciseMotion exercise={exercise('supinated-lat-pulldown')}/>);
  await act(async()=>intersect([{isIntersecting:true}]));
  fireEvent.click(screen.getByRole('button',{name:/Play .* video/}));
  expect(container.querySelector('iframe')).not.toBeNull();
@@ -94,15 +94,20 @@ it('removes embedded playback when the app enters the background',async()=>{
  expect(container.querySelector('iframe')).toBeNull();
 });
 it('lets combination exercises show each video separately and resets the previous player',async()=>{
- const {container,rerender}=render(<ExerciseMotion exercise={exercise('pendlay-row-barbell-bent-over-row')}/>);
+ const {container}=render(<ExerciseMotion exercise={exercise('dumbbell-front-raise-lateral-raise')}/>);
  await act(async()=>intersect([{isIntersecting:true}]));
  fireEvent.click(screen.getByRole('button',{name:/Play .* video/}));
- expect(container.querySelector('iframe')!.src).toContain('axoeDmW0oAY');
- fireEvent.click(screen.getByRole('button',{name:'Bent-over row',exact:true}));
- expect(screen.getByRole('button',{name:'Bent-over row',exact:true}).getAttribute('aria-pressed')).toBe('true');
- expect(container.querySelector('iframe')).toBeNull();
- expect(screen.getByRole('link',{name:'Open video'}).getAttribute('href')).toContain('FWJR5Ve8bnQ');
- rerender(<ExerciseMotion exercise={exercise('dumbbell-front-raise-lateral-raise')}/>);
+ expect(container.querySelector('iframe')!.src).toContain('-t7fuZ0KhDA');
  fireEvent.click(screen.getByRole('button',{name:'Lateral raise',exact:true}));
+ expect(screen.getByRole('button',{name:'Lateral raise',exact:true}).getAttribute('aria-pressed')).toBe('true');
+ expect(container.querySelector('iframe')).toBeNull();
  expect(container.querySelector('video')!.getAttribute('src')).toBe('/motion/wger-348.mp4');
+});
+it('plays weeks 1-3 without YouTube, using clips or two-photo loops',()=>{
+ const early=new Set(program.filter(s=>s.week<=3).flatMap(s=>s.exercises.map(e=>e.id)));
+ for(const id of early){const entry=motionCatalog[id];expect(entry.type,id).toBe('video');}
+ const loop=motionCatalog['a2-cable-pull-through'];
+ expect(loop).toMatchObject({type:'video',src:'/motion/fedb-Pull_Through.mp4',poster:'/images/Pull_Through.jpg',license:'Unlicense'});
+ render(<ExerciseMotion exercise={exercise('a2-cable-pull-through')}/>);
+ expect(screen.getByText(/two photos, looped/)).toBeTruthy();
 });
