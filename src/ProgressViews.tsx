@@ -37,6 +37,18 @@ function OverallProgress({overall}:{overall:Overall}){
   <p className="guide-reference">Each exercise is compared with its own first session (estimated one-rep max, or reps for bodyweight moves), then averaged. Muscle size is not measured directly: rising strength at 6-15 reps, with weight creeping up and waist steady, is the practical sign of growth.</p>
  </div>;
 }
+// The same closer look, for one exercise, inside its expanded card.
+export function ExerciseTrend({sessions,name}:{sessions:Session[];name:string}){
+ const[metric,setMetric]=useState<Metric>('e1rm');
+ const probe=exerciseSeries(sessions,name,'reps'),metrics:Metric[]=probe.weighted?['e1rm','top','volume','reps']:['reps'],active=metrics.includes(metric)?metric:metrics[0];
+ const full=exerciseSeries(sessions,name,active),points=full.points.slice(-shownPoints);
+ if(!points.length)return <p className="exercise-trend-empty">Your progress graph for this exercise appears after you finish a session with it.</p>;
+ return <section className="exercise-trend" aria-label={`${strip(name)} progress`}><div className="progress-head"><span className="tiny">YOUR PROGRESS</span><TrendingUp size={16}/></div>
+  {metrics.length>1&&<div className="trend-tabs" role="radiogroup" aria-label={`${strip(name)} metric`}>{metrics.map(m=><button key={m} type="button" role="radio" aria-checked={active===m} className={active===m?'selected':''} onClick={()=>setMetric(m)}>{metricLabels[m]}</button>)}</div>}
+  <Headline points={points} unit={full.unit}/><TrendChart points={points} unit={full.unit} label={`${strip(name)} ${metricLabels[active].toLowerCase()}`}/>
+  {points.length<2&&<p className="goal-note">One session so far. The trend appears after the next one.</p>}
+ </section>;
+}
 // Training progress from finished sessions, shown above the Today hero.
 export function ProgressCard({sessions}:{sessions:Session[]}){
  const exercises=trainedExercises(sessions);

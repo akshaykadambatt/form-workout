@@ -5,7 +5,7 @@ import {render,screen,fireEvent,cleanup} from '@testing-library/react';
 import {createSession,defaults,type Session} from '../src/model';
 import {bodyDefaults,newEntry} from '../src/nutrition';
 import {allExercises,bodySeries,change,exerciseSeries,sessionVolume,overallProgress,trainedExercises,weeklyVolume,weekStart} from '../src/progress';
-import {ProgressCard,BodyTrendCard} from '../src/ProgressViews';
+import {ProgressCard,BodyTrendCard,ExerciseTrend} from '../src/ProgressViews';
 import {offNutrition} from '../src/FoodViews';
 afterEach(cleanup);
 // A finished session of the first workout with the first exercise logged.
@@ -79,6 +79,14 @@ describe('training progress',()=>{
   expect(screen.getByText('Holding steady')).toBeTruthy();expect(screen.getByText(/\+10\.5% stronger on average since Oct 1/)).toBeTruthy();
   fireEvent.click(screen.getByRole('button',{name:/1 up · 0 level · 0 down across 1 exercises/}));
   expect(screen.getByRole('list').textContent).toContain('+10.5%');
+ });
+ it('charts one exercise inside its card, with the same metric switch',()=>{
+  const{rerender}=render(<ExerciseTrend sessions={history} name={name}/>);
+  expect(screen.getByRole('img',{name:/est\. 1rm: Oct 1 126\.7 .*Oct 15 140/})).toBeTruthy();expect(screen.getByText(/\(\+10%\) since Oct 1/)).toBeTruthy();
+  fireEvent.click(screen.getByRole('radio',{name:'Reps'}));
+  expect(screen.getByRole('img',{name:/reps: Oct 1 /})).toBeTruthy();
+  rerender(<ExerciseTrend sessions={history} name="Never trained"/>);
+  expect(screen.queryByRole('img')).toBeNull();expect(screen.getByText(/appears after you finish a session/)).toBeTruthy();
  });
  it('explains itself before any workout is finished',()=>{
   render(<ProgressCard sessions={[workout(1,100,8,{finishedAt:null})]}/>);

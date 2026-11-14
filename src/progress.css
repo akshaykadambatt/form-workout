@@ -15,6 +15,11 @@
 .lift-list li.up strong{color:var(--lime)}
 .lift-list li.down strong{color:var(--pink)}
 .progress-detail{color:var(--muted)}
+.exercise-trend{display:grid;gap:10px;margin:14px 0 4px;padding:14px;border-radius:var(--radius-small);background:var(--raised)}
+.exercise-trend .trend-dot{background:var(--raised)}
+.exercise-trend .trend-dot.last{background:var(--lime)}
+.exercise-trend .trend-headline strong{font-size:22px}
+.exercise-trend-empty{margin:12px 0 4px;font-size:12px;color:var(--muted)}
 .trend-tabs{display:flex;flex-wrap:wrap;gap:6px}
 .trend-tabs button{padding:6px 12px;min-height:34px;border-radius:var(--radius-pill);border:var(--border-width) solid var(--line);background:transparent;color:var(--muted);font-size:12px}
 .trend-tabs button.selected{background:var(--lime);color:var(--accent-ink);border-color:var(--lime);font-weight:700}
